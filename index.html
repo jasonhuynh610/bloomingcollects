@@ -3,30 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blooming Collects 🌼 a garden of random projects</title>
-  <meta name="description" content="A playful garden of experiments, toys, and half-baked ideas." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌼</text></svg>" />
+  <title>Blooming Collects · a garden of random projects</title>
+  <meta name="description" content="A quiet little garden of experiments, toys, and half-finished ideas." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%20aria-hidden%3D%22true%22%3E%3Cg%20fill%3D%22%23f29bbd%22%3E%3Cpath%20transform%3D%22rotate(0%2050%2050)%22%20d%3D%22M50%2050%20C38%2038%2036%2018%2046%208%20L50%2014%20L54%208%20C64%2018%2062%2038%2050%2050Z%22%2F%3E%3Cpath%20transform%3D%22rotate(72%2050%2050)%22%20d%3D%22M50%2050%20C38%2038%2036%2018%2046%208%20L50%2014%20L54%208%20C64%2018%2062%2038%2050%2050Z%22%2F%3E%3Cpath%20transform%3D%22rotate(144%2050%2050)%22%20d%3D%22M50%2050%20C38%2038%2036%2018%2046%208%20L50%2014%20L54%208%20C64%2018%2062%2038%2050%2050Z%22%2F%3E%3Cpath%20transform%3D%22rotate(216%2050%2050)%22%20d%3D%22M50%2050%20C38%2038%2036%2018%2046%208%20L50%2014%20L54%208%20C64%2018%2062%2038%2050%2050Z%22%2F%3E%3Cpath%20transform%3D%22rotate(288%2050%2050)%22%20d%3D%22M50%2050%20C38%2038%2036%2018%2046%208%20L50%2014%20L54%208%20C64%2018%2062%2038%2050%2050Z%22%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%227%22%20fill%3D%22%23ffe08a%22%2F%3E%3C%2Fsvg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
   <div id="petals" aria-hidden="true"></div>
   <header class="hero">
-    <div class="logo" id="logo" title="click me!">🌼</div>
-    <h1>Blooming <span class="wiggle">Collects</span></h1>
-    <p class="tagline">A little garden where random projects sprout. Some bloom, some wilt, all are fun.</p>
-    <div class="buttons">
-      <button id="surprise" class="btn btn-pink">🎲 Surprise me</button>
-      <a href="#garden" class="btn btn-yellow">🌱 See the garden</a>
+    <div class="sky-stars" id="stars" aria-hidden="true"></div>
+    <svg class="scene" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff7e6"/><stop offset=".35" stop-color="#fff1f5" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+        <linearGradient id="far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9c8f2"/><stop offset="1" stop-color="#e3dcf5"/></linearGradient>
+        <linearGradient id="near" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cdb8e8"/><stop offset="1" stop-color="#f6e4ef"/></linearGradient>
+        <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+      </defs>
+      <circle class="sun" cx="1080" cy="300" r="260" fill="url(#sun)"/>
+      <g class="clouds" fill="#fff" filter="url(#soft)">
+        <g class="cloud c1" opacity=".85"><ellipse cx="220" cy="210" rx="170" ry="38"/><ellipse cx="300" cy="185" rx="90" ry="45"/><ellipse cx="170" cy="195" rx="70" ry="32"/></g>
+        <g class="cloud c2" opacity=".7"><ellipse cx="900" cy="140" rx="200" ry="30"/><ellipse cx="980" cy="118" rx="95" ry="38"/></g>
+        <g class="cloud c3" opacity=".6"><ellipse cx="620" cy="330" rx="240" ry="26"/><ellipse cx="560" cy="312" rx="90" ry="30"/></g>
+      </g>
+      <path fill="url(#far)" opacity=".75" d="M0 560 L180 470 L300 520 L470 400 L620 500 L760 440 L900 520 L1060 420 L1220 500 L1440 440 L1440 800 L0 800Z"/>
+      <path fill="url(#near)" opacity=".9" d="M0 640 C200 580 360 610 520 640 C700 675 860 600 1040 610 C1200 620 1320 650 1440 630 L1440 800 L0 800Z"/>
+    </svg>
+    <svg class="branch" viewBox="0 0 420 300" aria-hidden="true">
+      <path d="M420 20 C330 40 260 70 200 120 C150 160 110 180 40 190" stroke="#7a5c6e" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M260 78 C250 120 230 150 200 175" stroke="#7a5c6e" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M330 45 C320 80 330 110 345 135" stroke="#7a5c6e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <g transform="translate(67 167) scale(0.26)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+      <g transform="translate(119 154) scale(0.22)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+      <g transform="translate(185 110) scale(0.3)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+      <g transform="translate(195 165) scale(0.2)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+      <g transform="translate(238 83) scale(0.24)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+      <g transform="translate(286 48) scale(0.28)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+      <g transform="translate(334 124) scale(0.22)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+      <g transform="translate(350 30) scale(0.2)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+      <g transform="translate(152 142) scale(0.16)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+      <g transform="translate(223 133) scale(0.14)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+      <g transform="translate(88 193) scale(0.14)" color="#f6a9c6"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></g>
+    </svg>
+    <nav class="nav">
+      <a class="brand" href="/"><span class="brand-mark" id="logo" title="click me"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><path transform="rotate(0 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(72 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(144 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(216 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/><path transform="rotate(288 50 50)" d="M50 50 C38 38 36 18 46 8 L50 14 L54 8 C64 18 62 38 50 50Z"/></g><circle cx="50" cy="50" r="7" fill="#ffe08a"/></svg></span> bloomingcollects</a>
+      <div class="nav-links"><a href="#garden">Projects</a><a href="https://github.com/jasonhuynh610/bloomingcollects">GitHub</a></div>
+    </nav>
+    <div class="hero-inner">
+      <p class="kicker">ブルーミング · collects</p>
+      <h1>Blooming <span class="accent">Collects</span></h1>
+      <p class="tagline">A quiet little garden where random projects grow. Some bloom, some don't. All of them were fun.</p>
+      <div class="buttons">
+        <button id="surprise" class="btn btn-primary">Surprise me</button>
+        <a href="#garden" class="btn btn-ghost">Browse projects</a>
+      </div>
     </div>
+    <p class="jp-vertical" aria-hidden="true">花咲くコレクション</p>
   </header>
   <main id="garden">
-    <h2>The Garden <small id="count"></small></h2>
-    <div class="filters" id="filters"></div>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">作品 · works</p>
+        <h2>Projects <small id="count"></small></h2>
+      </div>
+      <div class="filters" id="filters"></div>
+    </div>
     <div class="grid" id="grid"></div>
   </main>
   <footer>
-    <p>Planted with 💛 by Mushi · <span id="year"></span></p>
-    <p class="tiny">psst: try the Konami code ⬆⬆⬇⬇⬅➡⬅➡BA</p>
+    <p>Made with care by Mushi · <span id="year"></span></p>
+    <p class="tiny">psst: ↑ ↑ ↓ ↓ ← → ← → B A</p>
   </footer>
   <script src="/projects.js"></script>
   <script src="/script.js"></script>
