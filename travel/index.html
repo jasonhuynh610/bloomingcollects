@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Travel Journal · Blooming Collects</title>
+  <meta name="description" content="A travel journal of photographs from Japan." />
+  <meta name="theme-color" content="#f5efe4" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&family=Shippori+Mincho:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/travel/travel.css?v=1" />
+</head>
+<body>
+  <header class="top">
+    <a class="back" href="/">← Blooming Collects</a>
+    <nav class="countries" id="countryNav"></nav>
+  </header>
+
+  <section class="intro">
+    <p class="eyebrow">Travel Journal</p>
+    <h1>Notes from <em>the road</em></h1>
+    <p class="lede">A collection of photographs from my travels.</p>
+  </section>
+
+  <main id="journal"></main>
+
+  <footer class="foot">
+    <a href="/">Back to Blooming Collects</a>
+    <span>·</span>
+    <span>© <span id="year"></span> Mushi</span>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo">‹</button>
+    <figure class="lb-stage" id="lbStage"><img id="lbImg" alt="" /></figure>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo">›</button>
+    <p class="lb-count" id="lbCount"></p>
+  </div>
+
+  <script src="/travel/data.js?v=1"></script>
+  <script src="/travel/travel.js?v=1"></script>
+</body>
+</html>
