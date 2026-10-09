@@ -38,7 +38,8 @@ button { font: inherit; }
 .brand-mark { width: 30px; height: 30px; color: var(--sakura-deep); cursor: pointer; display: inline-flex; transition: transform .8s cubic-bezier(.2, .8, .2, 1); }
 .brand-mark svg { width: 100%; height: 100%; }
 .brand-mark.spin { transform: rotate(360deg); }
-.nav-links { display: flex; gap: 1.4rem; font-size: .95rem; color: var(--muted); }
+.nav-links { display: flex; gap: 1.2rem; font-size: .92rem; color: var(--muted); position: relative; z-index: 2; padding: .45rem 1rem; border-radius: 999px; background: rgba(255, 255, 255, .55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, .8); }
+body.night .nav-links { background: rgba(20, 24, 60, .35); border-color: rgba(255, 255, 255, .15); }
 .nav-links a:hover { color: var(--ink); }
 
 .hero-inner { position: relative; z-index: 1; text-align: center; padding: 7rem 1.5rem 5rem; max-width: 760px; }
@@ -138,7 +139,7 @@ body.night .sun { fill: #fff; opacity: .12; }
 }
 @media (max-width: 720px) {
   .jp-vertical { display: none; }
-  .branch { width: 62vw; opacity: .85; }
+  .branch { width: 58vw; top: 52px; opacity: .85; }
   .nav-links { gap: 1rem; }
   .hero { min-height: 78vh; }
 }

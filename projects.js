@@ -11,7 +11,7 @@ window.PROJECTS = [
   },
   {
     title: "Mystery Seed",
-    emoji: "🫘",
+    emoji: "🌱",
     description: "Something will grow here soon. Nobody knows what. Not even me.",
     url: "",
     status: "seedling",
