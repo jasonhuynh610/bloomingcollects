@@ -51,7 +51,7 @@
     var vid = document.createElement("video");
     vid.muted = true; vid.loop = true; vid.playsInline = true; vid.autoplay = !reduce;
     vid.setAttribute("muted", ""); vid.setAttribute("playsinline", "");
-    vid.preload = "metadata"; vid.poster = c.dir + v.poster; vid.src = c.dir + v.src;
+    vid.preload = "auto"; vid.poster = c.dir + v.poster; vid.src = c.dir + v.src;
     vid.setAttribute("aria-label", c.name + ", video");
     var snd = document.createElement("button");
     snd.type = "button"; snd.className = "clip-sound"; snd.textContent = "🔇"; snd.setAttribute("aria-label", "Turn sound on");
@@ -61,10 +61,13 @@
       if (vid.paused) vid.play();
     };
     w.appendChild(vid); w.appendChild(snd);
-    if (reduce) vid.controls = true;
-    else new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { var pr = vid.play(); if (pr && pr.catch) pr.catch(function () {}); } else vid.pause(); });
-    }, { threshold: 0.25 }).observe(w);
+    if (reduce) { vid.controls = true; return w; }
+    // play as soon as the page opens and keep looping while on the page
+    function go() { if (!vid.paused) return; var pr = vid.play(); if (pr && pr.catch) pr.catch(function () {}); }
+    go(); vid.addEventListener("loadeddata", go); vid.addEventListener("pause", function () { if (!document.hidden) setTimeout(go, 200); });
+    // iPhone Low Power Mode blocks autoplay until the first touch, so start on any tap/swipe
+    ["touchend", "click", "keydown"].forEach(function (t) { addEventListener(t, go, { passive: true }); });
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) go(); });
     return w;
   }
 
