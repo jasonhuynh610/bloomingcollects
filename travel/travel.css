@@ -37,6 +37,7 @@ h1 em { font-style: italic; color: var(--accent); }
 
 .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(.5rem, 1.6vw, 1.1rem); }
 @media (min-width: 900px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+.gallery.dense { grid-auto-flow: dense; }
 .photo { position: relative; margin: 0; padding: 0; border: 0; background: var(--cream-2); cursor: zoom-in; overflow: hidden; border-radius: 3px; aspect-ratio: var(--ar, 1); display: block; width: 100%; }
 .photo.feature { grid-column: 1 / -1; }
 @media (min-width: 900px) { .photo.feature { grid-column: span 2; grid-row: span 2; } }
