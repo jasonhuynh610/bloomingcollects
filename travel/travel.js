@@ -3,6 +3,7 @@
   var journal = document.getElementById("journal");
   var nav = document.getElementById("countryNav");
   var all = [];
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   data.forEach(function (c) {
     if (!c.photos || !c.photos.length) return;
@@ -38,10 +39,34 @@
       b.appendChild(img);
       b.onclick = function () { open(idx); };
       grid.appendChild(b);
+      (c.videos || []).forEach(function (v) { if (v.after === p.id) grid.appendChild(clip(c, v)); });
     });
     sec.appendChild(grid);
     journal.appendChild(sec);
   });
+
+  // autoplaying clip: muted + playsinline so iPhone allows autoplay; tap toggles sound
+  function clip(c, v) {
+    var w = document.createElement("div"); w.className = "photo clip";
+    var vid = document.createElement("video");
+    vid.muted = true; vid.loop = true; vid.playsInline = true; vid.autoplay = !reduce;
+    vid.setAttribute("muted", ""); vid.setAttribute("playsinline", "");
+    vid.preload = "metadata"; vid.poster = c.dir + v.poster; vid.src = c.dir + v.src;
+    vid.setAttribute("aria-label", c.name + ", video");
+    var snd = document.createElement("button");
+    snd.type = "button"; snd.className = "clip-sound"; snd.textContent = "🔇"; snd.setAttribute("aria-label", "Turn sound on");
+    snd.onclick = function () {
+      vid.muted = !vid.muted; snd.textContent = vid.muted ? "🔇" : "🔊";
+      snd.setAttribute("aria-label", vid.muted ? "Turn sound on" : "Turn sound off");
+      if (vid.paused) vid.play();
+    };
+    w.appendChild(vid); w.appendChild(snd);
+    if (reduce) vid.controls = true;
+    else new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { var pr = vid.play(); if (pr && pr.catch) pr.catch(function () {}); } else vid.pause(); });
+    }, { threshold: 0.25 }).observe(w);
+    return w;
+  }
 
   // lightbox
   var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"), count = document.getElementById("lbCount");
@@ -95,7 +120,6 @@
   }, { passive: true });
 
   // ---------- motion ----------
-  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
