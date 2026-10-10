@@ -104,7 +104,7 @@
     top.classList.toggle("scrolled", scrollY > 10);
     if (!reduce) feats.forEach(function (img) {
       var r = img.parentNode.getBoundingClientRect();
-      if (r.bottom > 0 && r.top < innerHeight) img.style.setProperty("--py", ((r.top + r.height / 2 - innerHeight / 2) * -0.06).toFixed(1) + "px");
+      if (r.bottom > 0 && r.top < innerHeight) var lim = r.height * 0.06, v = (r.top + r.height / 2 - innerHeight / 2) * -0.06; img.style.setProperty("--py", Math.max(-lim, Math.min(lim, v)).toFixed(1) + "px");
     });
     ticking = false;
   }
