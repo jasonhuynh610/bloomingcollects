@@ -20,7 +20,7 @@
       var b = document.createElement("button");
       b.type = "button";
       b.className = "photo" + (i % 7 === 0 ? " feature" : "");
-      b.style.setProperty("--ar", (i % 7 === 0) ? (p.w + "/" + p.h) : "1");
+      b.style.setProperty("--ar", (i % 7 === 0 && p.w > p.h) ? (p.w + "/" + p.h) : "3/2");
       b.setAttribute("aria-label", "Open " + all[idx].alt);
       var img = new Image();
       img.loading = i < 3 ? "eager" : "lazy";
