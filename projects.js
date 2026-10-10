@@ -2,6 +2,14 @@
 // status: "seedling" (just started) | "sprouting" (in progress) | "bloomed" (done) | "wilted" (abandoned, RIP)
 window.PROJECTS = [
   {
+    title: "Travel Journal",
+    emoji: "✈️",
+    description: "Photos from my trips to Japan and South Korea.",
+    url: "/travel/",
+    status: "bloomed",
+    tags: ["travel", "photos"],
+  },
+  {
     title: "Hello, Garden",
     emoji: "👋",
     description: "The very first seed. A tiny test page to prove everything works.",
