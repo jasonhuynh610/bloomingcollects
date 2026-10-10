@@ -3,6 +3,7 @@
   var journal = document.getElementById("journal");
   var nav = document.getElementById("countryNav");
   var all = [];
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   data.forEach(function (c) {
     if (!c.photos || !c.photos.length) return;
@@ -13,31 +14,62 @@
     sec.className = "country"; sec.id = c.id;
     sec.innerHTML = '<div class="country-head"><h2>' + c.name + (c.native ? '<span class="native">' + c.native + "</span>" : "") +
       '</h2><span class="count">' + c.photos.length + " photographs</span></div>";
-    var grid = document.createElement("div"); grid.className = "gallery";
+    var grid = document.createElement("div"); grid.className = "gallery" + (c.tile ? " dense" : "");
+    var lastFeat = -99;
     c.photos.forEach(function (p, i) {
       var idx = all.length;
       all.push({ src: c.dir + p.id + "-lg.webp", alt: c.name + ", photo " + (i + 1) + " of " + c.photos.length });
+      // feature a landscape shot roughly every 7 photos
+      var feat = p.w > p.h && i - lastFeat >= 7;
+      if (feat) lastFeat = i;
       var b = document.createElement("button");
       b.type = "button";
-      b.className = "photo" + (i % 7 === 0 ? " feature" : "");
-      b.style.setProperty("--d", (i % 7 === 0 ? 0 : (i % 2) * 0.12) + "s");
-      b.style.setProperty("--ar", (i % 7 === 0 && p.w > p.h) ? (p.w + "/" + p.h) : "3/2");
+      b.className = "photo" + (feat ? " feature" : "");
+      b.style.setProperty("--d", (feat ? 0 : (i % 2) * 0.12) + "s");
+      b.style.setProperty("--ar", feat ? (p.w + "/" + p.h) : (c.tile || "3/2"));
       b.setAttribute("aria-label", "Open " + all[idx].alt);
       var img = new Image();
       img.loading = i < 3 ? "eager" : "lazy";
       img.decoding = "async";
       img.alt = all[idx].alt;
-      img.sizes = i % 7 === 0 ? "(min-width: 900px) 66vw, 100vw" : "(min-width: 900px) 33vw, 50vw";
+      img.sizes = feat ? "(min-width: 900px) 66vw, 100vw" : "(min-width: 900px) 33vw, 50vw";
       img.srcset = c.dir + p.id + "-sm.webp 800w, " + c.dir + p.id + "-lg.webp 2000w";
       img.src = c.dir + p.id + "-sm.webp";
       img.onload = function () { img.classList.add("loaded"); };
       b.appendChild(img);
       b.onclick = function () { open(idx); };
       grid.appendChild(b);
+      (c.videos || []).forEach(function (v) { if (v.after === p.id) grid.appendChild(clip(c, v)); });
     });
     sec.appendChild(grid);
     journal.appendChild(sec);
   });
+
+  // autoplaying clip: muted + playsinline so iPhone allows autoplay; tap toggles sound
+  function clip(c, v) {
+    var w = document.createElement("div"); w.className = "photo clip";
+    var vid = document.createElement("video");
+    vid.muted = true; vid.loop = true; vid.playsInline = true; vid.autoplay = !reduce;
+    vid.setAttribute("muted", ""); vid.setAttribute("playsinline", "");
+    vid.preload = "auto"; vid.poster = c.dir + v.poster; vid.src = c.dir + v.src;
+    vid.setAttribute("aria-label", c.name + ", video");
+    var snd = document.createElement("button");
+    snd.type = "button"; snd.className = "clip-sound"; snd.textContent = "🔇"; snd.setAttribute("aria-label", "Turn sound on");
+    snd.onclick = function () {
+      vid.muted = !vid.muted; snd.textContent = vid.muted ? "🔇" : "🔊";
+      snd.setAttribute("aria-label", vid.muted ? "Turn sound on" : "Turn sound off");
+      if (vid.paused) vid.play();
+    };
+    w.appendChild(vid); w.appendChild(snd);
+    if (reduce) { vid.controls = true; return w; }
+    // play as soon as the page opens and keep looping while on the page
+    function go() { if (!vid.paused) return; var pr = vid.play(); if (pr && pr.catch) pr.catch(function () {}); }
+    go(); vid.addEventListener("loadeddata", go); vid.addEventListener("pause", function () { if (!document.hidden) setTimeout(go, 200); });
+    // iPhone Low Power Mode blocks autoplay until the first touch, so start on any tap/swipe
+    ["touchend", "click", "keydown"].forEach(function (t) { addEventListener(t, go, { passive: true }); });
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) go(); });
+    return w;
+  }
 
   // lightbox
   var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"), count = document.getElementById("lbCount");
@@ -91,7 +123,6 @@
   }, { passive: true });
 
   // ---------- motion ----------
-  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
