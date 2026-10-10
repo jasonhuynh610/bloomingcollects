@@ -62,4 +62,51 @@ h1 em { font-style: italic; color: var(--accent); }
 .lb-prev { left: .2rem; } .lb-next { right: .2rem; }
 .lb-count { position: absolute; bottom: max(1rem, env(safe-area-inset-bottom)); margin: 0; color: rgba(245, 239, 228, .7); font-size: .78rem; letter-spacing: .25em; }
 @media (hover: none) { .lb-nav { display: none; } }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* ---------- animations ---------- */
+.progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; z-index: 20; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+.drift { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+.top, .intro, main, .foot { position: relative; z-index: 2; }
+.top { z-index: 10; transition: padding .35s ease, box-shadow .35s ease; }
+.top.scrolled { box-shadow: 0 6px 24px rgba(43, 39, 35, .06); }
+
+.intro .eyebrow, .intro .lede { opacity: 0; transform: translateY(14px); animation: up .9s cubic-bezier(.2, .7, .2, 1) forwards; }
+.intro .eyebrow { animation-delay: .1s; letter-spacing: .6em; animation-name: up, track; }
+.intro .lede { animation-delay: 1.05s; }
+.split span { display: inline-block; opacity: 0; transform: translateY(.45em) rotate(2deg); filter: blur(6px); animation: word 1s cubic-bezier(.2, .7, .2, 1) forwards; }
+.split span:nth-of-type(1) { animation-delay: .25s; } .split span:nth-of-type(2) { animation-delay: .4s; }
+.split em span:nth-of-type(1) { animation-delay: .58s; } .split em span:nth-of-type(2) { animation-delay: .74s; }
+.split em { position: relative; display: inline-block; }
+.split em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .06em; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: 0 50%; animation: line 1.1s cubic-bezier(.7, 0, .2, 1) 1.15s forwards; }
+
+.country-head h2, .country-head .count { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s cubic-bezier(.2, .7, .2, 1); }
+.country-head .count { transition-delay: .15s; }
+.country-head { position: relative; padding-bottom: 1rem; }
+.country-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); transform: scaleX(0); transform-origin: 0 50%; transition: transform 1.4s cubic-bezier(.7, 0, .2, 1) .2s; }
+.country-head.in h2, .country-head.in .count { opacity: 1; transform: none; }
+.country-head.in::after { transform: scaleX(1); }
+
+.photo { opacity: 0; transform: translateY(40px) scale(.97); clip-path: inset(12% 0 0 0 round 3px); transition: opacity .9s ease, transform 1.1s cubic-bezier(.2, .7, .2, 1), clip-path 1.1s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s); }
+.photo.in { opacity: 1; transform: none; clip-path: inset(0 0 0 0 round 3px); }
+.photo img { will-change: transform; transform: translateY(var(--py, 0)) scale(1.08); transition: opacity .5s; }
+.photo:hover img { transform: translateY(var(--py, 0)) scale(1.12); transition: transform .8s cubic-bezier(.2, .7, .2, 1), opacity .5s; }
+.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 40%, rgba(255, 250, 240, .35) 50%, transparent 60%); transform: translateX(-100%); pointer-events: none; }
+.photo:hover::after { transform: translateX(100%); transition: transform 1s ease; }
+
+.lightbox { opacity: 0; transition: opacity .35s ease; }
+.lightbox.open { opacity: 1; }
+.lb-stage img { transform: scale(.94); }
+.lightbox.open .lb-stage img { transform: scale(1); transition: opacity .3s, transform .45s cubic-bezier(.2, .7, .2, 1); }
+.lb-stage img.swap { opacity: 0; transform: translateX(var(--dir, 0)) scale(.98); }
+.fly { position: fixed; z-index: 101; object-fit: cover; border-radius: 3px; transition: all .45s cubic-bezier(.2, .7, .2, 1); pointer-events: none; }
+
+@keyframes up { to { opacity: 1; transform: none; } }
+@keyframes track { to { letter-spacing: .32em; } }
+@keyframes word { to { opacity: 1; transform: none; filter: none; } }
+@keyframes line { to { transform: scaleX(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .photo, .country-head h2, .country-head .count, .intro .eyebrow, .intro .lede, .split span { opacity: 1 !important; transform: none !important; clip-path: none !important; filter: none !important; }
+  .drift, .progress { display: none; }
+}

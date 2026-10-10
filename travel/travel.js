@@ -20,6 +20,7 @@
       var b = document.createElement("button");
       b.type = "button";
       b.className = "photo" + (i % 7 === 0 ? " feature" : "");
+      b.style.setProperty("--d", (i % 7 === 0 ? 0 : (i % 2) * 0.12) + "s");
       b.style.setProperty("--ar", (i % 7 === 0 && p.w > p.h) ? (p.w + "/" + p.h) : "3/2");
       b.setAttribute("aria-label", "Open " + all[idx].alt);
       var img = new Image();
@@ -42,6 +43,7 @@
   var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"), count = document.getElementById("lbCount");
   var cur = 0, lastFocus = null;
   function show(i) {
+    lbImg.style.setProperty("--dir", (i > cur ? 30 : -30) + "px");
     cur = (i + all.length) % all.length;
     lbImg.classList.add("swap");
     var next = new Image();
@@ -50,8 +52,26 @@
     count.textContent = (cur + 1) + " / " + all.length;
     [cur + 1, cur - 1].forEach(function (j) { var k = (j + all.length) % all.length; new Image().src = all[k].src; });
   }
-  function open(i) { lastFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; show(i); document.getElementById("lbClose").focus(); }
-  function close() { lb.hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+  function open(i) {
+    lastFocus = document.activeElement; document.body.style.overflow = "hidden";
+    var thumb = lastFocus && lastFocus.querySelector && lastFocus.querySelector("img");
+    lb.hidden = false; show(i);
+    if (thumb && !reduce) {
+      var r = thumb.getBoundingClientRect(), f = document.createElement("img");
+      f.src = thumb.currentSrc || thumb.src; f.className = "fly";
+      f.style.cssText = "left:" + r.left + "px;top:" + r.top + "px;width:" + r.width + "px;height:" + r.height + "px";
+      document.body.appendChild(f);
+      requestAnimationFrame(function () { requestAnimationFrame(function () {
+        var vw = innerWidth, vh = innerHeight * 0.8, ar = thumb.naturalWidth / thumb.naturalHeight || 1.5;
+        var w = Math.min(vw, vh * ar), h = w / ar;
+        f.style.cssText = "left:" + (vw - w) / 2 + "px;top:" + (innerHeight - h) / 2 + "px;width:" + w + "px;height:" + h + "px;opacity:0";
+        lb.classList.add("open");
+      }); });
+      setTimeout(function () { f.remove(); }, 500);
+    } else requestAnimationFrame(function () { lb.classList.add("open"); });
+    document.getElementById("lbClose").focus();
+  }
+  function close() { lb.classList.remove("open"); setTimeout(function () { lb.hidden = true; }, 300); document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
   document.getElementById("lbClose").onclick = close;
   document.getElementById("lbPrev").onclick = function (e) { e.stopPropagation(); show(cur - 1); };
   document.getElementById("lbNext").onclick = function (e) { e.stopPropagation(); show(cur + 1); };
@@ -69,6 +89,46 @@
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(cur + (dx < 0 ? 1 : -1));
     else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) close();
   }, { passive: true });
+
+  // ---------- motion ----------
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+  document.querySelectorAll(".photo, .country-head").forEach(function (el) { reduce ? el.classList.add("in") : io.observe(el); });
+
+  var bar = document.getElementById("progress"), top = document.querySelector(".top"), feats = document.querySelectorAll(".photo.feature img"), ticking = false;
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = "scaleX(" + (h > 0 ? scrollY / h : 0) + ")";
+    top.classList.toggle("scrolled", scrollY > 10);
+    if (!reduce) feats.forEach(function (img) {
+      var r = img.parentNode.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight) img.style.setProperty("--py", ((r.top + r.height / 2 - innerHeight / 2) * -0.06).toFixed(1) + "px");
+    });
+    ticking = false;
+  }
+  addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  // soft drifting petals on the cream background
+  var cv = document.getElementById("drift"), cx = cv.getContext("2d"), dpr = Math.min(devicePixelRatio || 1, 2), ps = [];
+  function size() { cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; }
+  size(); addEventListener("resize", size);
+  if (!reduce) {
+    var n = innerWidth < 700 ? 9 : 16;
+    for (var k = 0; k < n; k++) ps.push({ x: Math.random(), y: Math.random(), s: 4 + Math.random() * 5, v: .00025 + Math.random() * .0004, a: Math.random() * 6.28, w: .5 + Math.random() });
+    (function loop() {
+      cx.clearRect(0, 0, cv.width, cv.height);
+      ps.forEach(function (p) {
+        p.y += p.v; p.a += .01 * p.w; if (p.y > 1.05) { p.y = -.05; p.x = Math.random(); }
+        var x = (p.x + Math.sin(p.a) * .02) * cv.width, y = p.y * cv.height, s = p.s * dpr;
+        cx.save(); cx.translate(x, y); cx.rotate(p.a); cx.globalAlpha = .28;
+        cx.fillStyle = "#d9a38f"; cx.beginPath(); cx.ellipse(0, 0, s, s * .6, 0, 0, 6.28); cx.fill(); cx.restore();
+      });
+      if (!document.hidden) requestAnimationFrame(loop); else setTimeout(loop, 500);
+    })();
+  }
 
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
