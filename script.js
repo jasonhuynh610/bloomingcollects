@@ -11,16 +11,20 @@ let active = "all";
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 function render() {
+  timers.forEach(clearInterval); timers.clear();
   grid.innerHTML = "";
   const list = projects.filter((p) => active === "all" || (p.tags || []).includes(active));
   list.forEach((p, i) => {
     const s = STATUS[p.status] || STATUS.seedling;
     const el = document.createElement(p.url ? "a" : "div");
-    el.className = "card" + (p.url ? "" : " card-empty");
+    el.className = "card" + (p.url ? "" : " card-empty") + (p.slides ? " card-wide" : "");
     if (p.url) el.href = p.url;
     el.style.setProperty("--accent", s.color);
     el.style.animationDelay = i * 70 + "ms";
-    el.innerHTML = `
+    const slides = p.slides ? `<div class="slides">${p.slides.map(([src, label], j) =>
+      `<figure class="slide${j === 0 ? " on" : ""}"><img src="${esc(src)}" alt="" ${j > 1 ? 'loading="lazy"' : ""} decoding="async"><figcaption>${esc(label)}</figcaption></figure>`).join("")}
+      <div class="dots">${p.slides.map((_, j) => `<i${j === 0 ? ' class="on"' : ""}></i>`).join("")}</div></div>` : "";
+    el.innerHTML = `${slides}
       <div class="card-icon">${esc(p.emoji || "🌸")}</div>
       <h3>${esc(p.title)}</h3>
       <p>${esc(p.description)}</p>
@@ -30,8 +34,26 @@ function render() {
         ${p.url ? '<span class="arrow">→</span>' : ""}
       </div>`;
     grid.appendChild(el);
+    if (p.slides) slideshow(el);
   });
   document.getElementById("count").textContent = projects.length + (projects.length === 1 ? " project" : " projects");
+}
+
+// crossfade card photos every few seconds; pauses while off-screen or the tab is hidden
+const timers = new Set();
+function slideshow(card) {
+  const figs = card.querySelectorAll(".slide"), dots = card.querySelectorAll(".dots i");
+  if (figs.length < 2) return;
+  let cur = 0, visible = true;
+  new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(card);
+  const t = setInterval(() => {
+    if (!visible || document.hidden) return;
+    figs[cur].classList.remove("on"); dots[cur].classList.remove("on");
+    cur = (cur + 1) % figs.length;
+    figs[cur].classList.add("on"); dots[cur].classList.add("on");
+    const next = figs[(cur + 1) % figs.length].querySelector("img"); next.loading = "eager";
+  }, reduceMotion ? 6000 : 3500);
+  timers.add(t);
 }
 
 function renderFilters() {

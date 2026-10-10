@@ -1,5 +1,6 @@
 // 🌱 Add a project = add one object here. That's it.
 // status: "seedling" (just started) | "sprouting" (in progress) | "bloomed" (done) | "wilted" (abandoned, RIP)
+// slides (optional): photos that crossfade at the top of the card, as [src, label]
 window.PROJECTS = [
   {
     title: "Travel Journal",
@@ -8,29 +9,19 @@ window.PROJECTS = [
     url: "/travel/",
     status: "bloomed",
     tags: ["travel", "photos"],
-  },
-  {
-    title: "Hello, Garden",
-    emoji: "👋",
-    description: "The very first seed. A tiny test page to prove everything works.",
-    url: "/projects/hello-garden/",
-    status: "bloomed",
-    tags: ["meta"],
-  },
-  {
-    title: "Mystery Seed",
-    emoji: "🌱",
-    description: "Something will grow here soon. Nobody knows what. Not even me.",
-    url: "",
-    status: "seedling",
-    tags: ["soon"],
-  },
-  {
-    title: "Mystery Seed #2",
-    emoji: "🌰",
-    description: "Another empty pot waiting for a weird idea.",
-    url: "",
-    status: "seedling",
-    tags: ["soon"],
+    slides: [
+      ["/travel/photos/japan/japan-019-sm.webp", "Japan"],
+      ["/travel/photos/korea/korea-20-sm.webp", "South Korea"],
+      ["/travel/photos/japan/japan-004-sm.webp", "Japan"],
+      ["/travel/photos/korea/korea-01-sm.webp", "South Korea"],
+      ["/travel/photos/japan/japan-010-sm.webp", "Japan"],
+      ["/travel/photos/korea/korea-12-sm.webp", "South Korea"],
+      ["/travel/photos/japan/japan-007-sm.webp", "Japan"],
+      ["/travel/photos/korea/korea-13-sm.webp", "South Korea"],
+      ["/travel/photos/japan/japan-017-sm.webp", "Japan"],
+      ["/travel/photos/korea/korea-05-sm.webp", "South Korea"],
+      ["/travel/photos/japan/japan-001-sm.webp", "Japan"],
+      ["/travel/photos/korea/korea-19-sm.webp", "South Korea"],
+    ],
   },
 ];
