@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/watchlist/app.css?v=2" />
+  <link rel="stylesheet" href="/watchlist/app.css?v=3" />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -20,6 +20,11 @@
   </header>
 
   <main id="main">
+    <nav class="tabs" id="tabs" aria-label="Dashboard sections" hidden>
+      <a href="#" id="tabList">My stocks</a>
+      <a href="#/scanner" id="tabScan">Volume scanner</a>
+    </nav>
+
     <!-- login -->
     <section class="view" id="loginView" hidden>
       <form class="card login" id="loginForm">
@@ -92,11 +97,26 @@
         <div class="card briefing" id="briefing" aria-live="polite"></div>
       </div>
     </section>
+
+    <!-- scanner -->
+    <section class="view" id="scanView" hidden>
+      <div class="list-head">
+        <h1>Volume scanner</h1>
+        <label class="switch"><input type="checkbox" id="hideCheap" /> <span>Hide stocks under $5</span></label>
+      </div>
+      <div class="scan-meta" id="scanMeta"></div>
+      <div id="scanBody" aria-live="polite"></div>
+      <details class="card method" id="scanMethod">
+        <summary>How this scan works</summary>
+        <div id="methodText"></div>
+      </details>
+    </section>
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="/watchlist/vendor/lightweight-charts.js"></script>
-  <script src="/watchlist/app.js?v=2"></script>
+  <script src="/watchlist/app.js?v=3"></script>
+  <script src="/watchlist/scanner.js?v=3"></script>
 </body>
 </html>

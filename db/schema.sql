@@ -30,3 +30,10 @@ CREATE TABLE IF NOT EXISTS login_attempts (
   at          INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS login_attempts_ip ON login_attempts (ip, at);
+
+-- daily high-volume scanner results (one row per session)
+CREATE TABLE IF NOT EXISTS scans (
+  trade_date  TEXT PRIMARY KEY,
+  json        TEXT NOT NULL,
+  created_at  TEXT NOT NULL DEFAULT (datetime('now'))
+);
