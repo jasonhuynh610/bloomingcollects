@@ -39,8 +39,11 @@
   }
 
   function show(id) {
-    ["loginView", "listView", "detailView"].forEach(function (v) { $(v).hidden = v !== id; });
+    ["loginView", "listView", "detailView", "scanView"].forEach(function (v) { $(v).hidden = v !== id; });
     $("logout").hidden = id === "loginView";
+    $("tabs").hidden = id === "loginView" || id === "detailView";
+    $("tabList").setAttribute("aria-current", id === "listView" ? "page" : "false");
+    $("tabScan").setAttribute("aria-current", id === "scanView" ? "page" : "false");
     window.scrollTo(0, 0);
   }
 
@@ -339,11 +342,23 @@
 
   // ---------- routing / boot ----------
   function route() {
+    if (location.hash === "#/scanner") { state.current = null; show("scanView"); if (window.WLScanner) window.WLScanner.open(); return; }
     var m = location.hash.match(/^#\/([A-Z0-9.\-]{1,12})$/i);
     if (m) openDetail(m[1].toUpperCase());
     else { state.current = null; show("listView"); renderRows(); }
   }
   window.addEventListener("hashchange", function () { if (!$("loginView").hidden) return; route(); });
+
+  // shared with scanner.js
+  window.WL = {
+    api: api, esc: esc, safeUrl: safeUrl, money: money, signed: signed, dir: dir, etTime: etTime, dateOnly: dateOnly, toast: toast,
+    has: function (sym) { return state.items.some(function (i) { return i.symbol === sym; }); },
+    add: function (sym, name) {
+      return api("watchlist", { method: "POST", body: { symbol: sym, name: name } }).then(function (d) {
+        state.items.push(d.item); refreshQuotes(); toast("Added " + sym + " to your watchlist."); return d.item;
+      });
+    },
+  };
 
   var poll;
   function boot() {
