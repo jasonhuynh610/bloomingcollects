@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Watchlist · Blooming Collects</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0a1120" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/watchlist/app.css?v=1" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar">
+    <a class="home" href="/" aria-label="Back to Blooming Collects">← Blooming Collects</a>
+    <span class="brand">Watchlist</span>
+    <button class="ghost small" id="logout" type="button" hidden>Sign out</button>
+  </header>
+
+  <main id="main">
+    <!-- login -->
+    <section class="view" id="loginView" hidden>
+      <form class="card login" id="loginForm">
+        <h1>Sign in</h1>
+        <p class="muted">This dashboard is private.</p>
+        <label for="pw">Password</label>
+        <input id="pw" type="password" autocomplete="current-password" required />
+        <p class="err" id="loginErr" role="alert"></p>
+        <button class="primary" type="submit" id="loginBtn">Sign in</button>
+      </form>
+    </section>
+
+    <!-- list -->
+    <section class="view" id="listView" hidden>
+      <div class="search" role="combobox" aria-expanded="false" aria-owns="results" aria-haspopup="listbox" id="searchBox">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search a company or ticker to add…" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-autocomplete="list" aria-controls="results" aria-label="Search stocks" />
+        <ul id="results" role="listbox" hidden></ul>
+      </div>
+
+      <div class="list-head">
+        <h1>My stocks <span class="count" id="count"></span></h1>
+        <div class="sort" role="group" aria-label="Sort by">
+          <button type="button" data-sort="symbol">Name</button>
+          <button type="button" data-sort="price">Price</button>
+          <button type="button" data-sort="changePct">Change</button>
+          <button type="button" data-sort="toTarget">Target</button>
+        </div>
+      </div>
+
+      <div id="rows" class="rows" aria-live="polite"></div>
+      <p class="meta" id="listMeta"></p>
+    </section>
+
+    <!-- detail -->
+    <section class="view" id="detailView" hidden>
+      <button class="ghost back" type="button" id="back">← All stocks</button>
+      <div class="detail-head">
+        <div>
+          <h1 id="dSym"></h1>
+          <p class="muted" id="dName"></p>
+        </div>
+        <div class="dprice">
+          <div class="big" id="dPrice">—</div>
+          <div id="dChange"></div>
+        </div>
+      </div>
+      <p class="meta" id="dMeta"></p>
+
+      <div class="card chart-card">
+        <div class="ranges" role="group" aria-label="Chart range" id="ranges"></div>
+        <div class="chart" id="chart" role="img" aria-label="Price chart"></div>
+        <p class="meta" id="chartMeta"></p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h2>My notes</h2>
+          <label class="sr" for="notes">Notes</label>
+          <textarea id="notes" rows="5" placeholder="Why you're watching this stock…"></textarea>
+          <label for="target">Target price (USD)</label>
+          <div class="target-row">
+            <input id="target" type="number" inputmode="decimal" min="0" step="0.01" placeholder="e.g. 250" />
+            <span id="toTarget" class="muted"></span>
+          </div>
+          <p class="saved" id="saved" aria-live="polite"></p>
+          <button class="danger" type="button" id="remove">Remove from watchlist</button>
+        </div>
+
+        <div class="card briefing" id="briefing" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/watchlist/vendor/lightweight-charts.js"></script>
+  <script src="/watchlist/app.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Cloudflare Pages config. Secrets (API keys, login hash) are set with
+# `wrangler pages secret put` and are NOT stored in this repo.
+name = "bloomingcollects"
+pages_build_output_dir = "."
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "watchlist"
+database_id = "f4a432a3-5e35-4d71-a4e3-da8b84c7c115"
