@@ -24,7 +24,9 @@ export async function onRequestPost({ request, env, data }) {
   if (!q.t) return fail(404, `No price data found for ${symbol}.`);
   const p = await finnhub(env, "/stock/profile2", { symbol });
   const name = String(body.name || p.name || symbol).slice(0, 120);
-  const exchange = String(p.exchange || body.exchange || "").slice(0, 80);
+  // "NASDAQ NMS - GLOBAL MARKET" -> "NASDAQ", "NEW YORK STOCK EXCHANGE, INC." -> "NYSE"
+  const rawEx = String(p.exchange || body.exchange || "");
+  const exchange = /^NEW YORK STOCK EXCHANGE/i.test(rawEx) ? "NYSE" : rawEx.split(/\s+NMS|\s+-|,/)[0].slice(0, 40);
 
   await env.DB.prepare("INSERT OR IGNORE INTO watchlist (symbol, name, exchange) VALUES (?, ?, ?)").bind(symbol, name, exchange).run();
   const item = await env.DB.prepare("SELECT symbol, name, exchange, notes, target, added_at FROM watchlist WHERE symbol = ?").bind(symbol).first();
