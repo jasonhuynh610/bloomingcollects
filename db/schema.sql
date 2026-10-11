@@ -37,3 +37,36 @@ CREATE TABLE IF NOT EXISTS scans (
   json        TEXT NOT NULL,
   created_at  TEXT NOT NULL DEFAULT (datetime('now'))
 );
+
+-- trade ideas: one row per idea, kept forever for honest outcome review
+CREATE TABLE IF NOT EXISTS ideas (
+  id          TEXT PRIMARY KEY,
+  trade_date  TEXT NOT NULL,
+  symbol      TEXT NOT NULL,
+  side        TEXT NOT NULL,
+  status      TEXT NOT NULL,
+  json        TEXT NOT NULL,
+  outcome     TEXT,
+  outcome_status TEXT NOT NULL DEFAULT 'open',
+  created_at  TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at  TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS ideas_date ON ideas (trade_date);
+CREATE INDEX IF NOT EXISTS ideas_open ON ideas (outcome_status);
+
+-- one market overview per trading day (regime, sectors, macro news, AI summary)
+CREATE TABLE IF NOT EXISTS idea_runs (
+  trade_date  TEXT PRIMARY KEY,
+  json        TEXT NOT NULL,
+  created_at  TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- intraday alerts
+CREATE TABLE IF NOT EXISTS alerts (
+  id          TEXT PRIMARY KEY,
+  ts          INTEGER NOT NULL,
+  symbol      TEXT NOT NULL,
+  kind        TEXT NOT NULL,
+  json        TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS alerts_ts ON alerts (ts);

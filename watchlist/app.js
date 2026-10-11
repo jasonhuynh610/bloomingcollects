@@ -39,11 +39,12 @@
   }
 
   function show(id) {
-    ["loginView", "listView", "detailView", "scanView"].forEach(function (v) { $(v).hidden = v !== id; });
+    ["loginView", "listView", "detailView", "scanView", "ideasView"].forEach(function (v) { $(v).hidden = v !== id; });
     $("logout").hidden = id === "loginView";
     $("tabs").hidden = id === "loginView" || id === "detailView";
     $("tabList").setAttribute("aria-current", id === "listView" ? "page" : "false");
     $("tabScan").setAttribute("aria-current", id === "scanView" ? "page" : "false");
+    $("tabIdeas").setAttribute("aria-current", id === "ideasView" ? "page" : "false");
     window.scrollTo(0, 0);
   }
 
@@ -343,6 +344,7 @@
   // ---------- routing / boot ----------
   function route() {
     if (location.hash === "#/scanner") { state.current = null; show("scanView"); if (window.WLScanner) window.WLScanner.open(); return; }
+    if (location.hash === "#/ideas") { state.current = null; show("ideasView"); if (window.WLIdeas) window.WLIdeas.open(); return; }
     var m = location.hash.match(/^#\/([A-Z0-9.\-]{1,12})$/i);
     if (m) openDetail(m[1].toUpperCase());
     else { state.current = null; show("listView"); renderRows(); }

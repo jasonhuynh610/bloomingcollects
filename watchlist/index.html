@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/watchlist/app.css?v=3" />
+  <link rel="stylesheet" href="/watchlist/app.css?v=4" />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -22,7 +22,8 @@
   <main id="main">
     <nav class="tabs" id="tabs" aria-label="Dashboard sections" hidden>
       <a href="#" id="tabList">My stocks</a>
-      <a href="#/scanner" id="tabScan">Volume scanner</a>
+      <a href="#/scanner" id="tabScan">Scanner</a>
+      <a href="#/ideas" id="tabIdeas">Trade ideas</a>
     </nav>
 
     <!-- login -->
@@ -98,6 +99,12 @@
       </div>
     </section>
 
+    <!-- trade ideas -->
+    <section class="view" id="ideasView" hidden>
+      <div class="list-head"><h1>Trade ideas</h1></div>
+      <div id="ideasBody" aria-live="polite"></div>
+    </section>
+
     <!-- scanner -->
     <section class="view" id="scanView" hidden>
       <div class="list-head">
@@ -116,7 +123,8 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="/watchlist/vendor/lightweight-charts.js"></script>
-  <script src="/watchlist/app.js?v=3"></script>
-  <script src="/watchlist/scanner.js?v=3"></script>
+  <script src="/watchlist/app.js?v=4"></script>
+  <script src="/watchlist/scanner.js?v=4"></script>
+  <script src="/watchlist/ideas.js?v=4"></script>
 </body>
 </html>
