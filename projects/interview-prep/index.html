@@ -200,11 +200,53 @@
         <li>What does growth look like from this role, for example toward Customer Success?</li>
       </ul></div>
     </section>
+
+    <!-- 8. SOCi -->
+    <section id="soci">
+      <h2>📣 SOCi: Sales Development Representative</h2>
+      <div class="card"><b>Company:</b> SOCi, AI-powered marketing for multi-location brands (Ford, Ace Hardware, Kumon, Liberty Tax). Their "Genius AI" agents handle local marketing work across hundreds of locations: social posts, reviews, local listings, ads. <b>Pay:</b> $50–60K base + commission (you asked for $60K base, OTE flexible). Remote, Miami/Fort Lauderdale preferred. <b>Applied 10/26.</b></div>
+      <div class="note"><b>This is a sales role, not support.</b> An SDR finds and qualifies potential customers, books demos for Account Executives (AEs) and closes small deals. Expect phone-heavy outreach and quotas (meetings booked, pipeline). In the interview, show you're coachable, driven and good at explaining tech, and be honest that sales is a new direction.</div>
+
+      <h3>What SOCi sells (in plain words)</h3>
+      <div class="card"><ul>
+        <li><b>Who buys it:</b> brands with lots of locations (franchises, retail chains, restaurants, dealerships, tax offices).</li>
+        <li><b>Their pain:</b> keeping hundreds of local pages, reviews and social accounts updated and on-brand is a ton of work.</li>
+        <li><b>SOCi's pitch:</b> AI agents do the work of "1,000 local marketers": respond to reviews, post locally, manage listings, so brands get more visibility and engagement without a huge team.</li>
+        <li><b>Your angle:</b> marketing degree + 3 years explaining an AI product to non-technical customers + you build AI workflows yourself.</li>
+      </ul></div>
+
+      <h3>What they want → what you've got</h3>
+      <div class="card"><table id="sociMap"></table></div>
+
+      <h3>SDR basics to know</h3>
+      <div id="sociBasics"></div>
+
+      <h3>Practice cold call (role-play out loud)</h3>
+      <div class="card">
+        <p class="muted">Pretend you're calling the marketing director of a 200-location restaurant chain. Keep it under 30 seconds before asking a question.</p>
+        <div class="sample">"Hi Sarah, this is Jason with SOCi. I'll be quick. I work with multi-location brands like Ace Hardware and Kumon. A lot of marketing leaders I talk to say keeping reviews, local pages and social posts current across hundreds of locations eats up their team's time. Is that something you're running into?"</div>
+        <p><b>If yes:</b> "How are you handling it today?" → listen → "Would it be worth 20 minutes with our team to see how our AI agents handle that across all your locations?"</p>
+        <p><b>If "not interested":</b> "Totally fair. Just so I know for the future, is that because you've already got it covered, or it's not a priority right now?"</p>
+        <p><b>If "send me an email":</b> "Happy to. So I send something useful, what's your biggest focus for local marketing this year?"</p>
+        <p><b>If "we already use a tool":</b> "Makes sense, most brands we talk to do. What would you change about it if you could?"</p>
+      </div>
+
+      <h3>Good questions to ask SOCi</h3>
+      <div class="card"><ul>
+        <li>What does a successful first 90 days look like for a new SDR? How is quota measured?</li>
+        <li>How is the SDR team split between outbound calling, email and events?</li>
+        <li>What does training and coaching look like for someone newer to sales?</li>
+        <li>How do SDRs work with AEs day to day?</li>
+        <li>What's the typical path and timeline from SDR to AE? Do people ever move into customer success?</li>
+        <li>How is commission structured, and what does a typical SDR earn at target (OTE)?</li>
+      </ul></div>
+      <p class="muted">Practice the SOCi questions in the <b>Practice</b> tab → category "SOCi".</p>
+    </section>
   </main>
   <footer>🌱 Practice out loud. Your answers save only in this browser.</footer>
 
 <script>
-const TABS=[["cheat","Cheat sheet"],["practice","Practice"],["mock","Mock interview"],["stories","TRACE stories"],["zendesk","Zendesk"],["fund","CS fundamentals"],["tb","TeamBuilder"]];
+const TABS=[["cheat","Cheat sheet"],["practice","Practice"],["mock","Mock interview"],["stories","TRACE stories"],["zendesk","Zendesk"],["fund","CS fundamentals"],["tb","TeamBuilder"],["soci","SOCi (SDR)"]];
 const tabsEl=document.getElementById("tabs");
 function openTab(id){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===id));tabsEl.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.id===id));localStorage.setItem("ip_tab",id);scrollTo({top:0});}
 TABS.forEach(([id,l])=>{const b=document.createElement("button");b.textContent=l;b.dataset.id=id;b.onclick=()=>openTab(id);tabsEl.appendChild(b);});
@@ -242,6 +284,14 @@ const Q=[
  // Zendesk / technical
  {c:"Zendesk",q:"What's the difference between a macro, a trigger and an automation?",k:["Macro: manual, the agent clicks it","Trigger: runs instantly when a ticket is created or updated","Automation: time-based, checks tickets about every hour"],s:"A macro is something an agent applies by hand, like a canned reply plus field updates. A trigger fires automatically the moment a ticket is created or updated, like sending an acknowledgment email. An automation is time-based, for example reminding a customer after a ticket has been pending for 3 days, or closing solved tickets.",t:""},
  {c:"Zendesk",q:"Walk me through the Zendesk ticket statuses.",k:["New → Open → Pending / On-hold → Solved → Closed","Pending = waiting on the customer","On-hold = waiting on a third party or internal team","Closed tickets can't be reopened"],s:"New is unassigned and untouched. Open means an agent is working it. Pending means we're waiting on the customer. On-hold means we're waiting on someone else, like engineering. Solved means we think it's fixed; the customer can still reply to reopen it. After a set time it becomes Closed, and new replies create a follow-up ticket.",t:""},
+ {c:"SOCi",q:"Why sales? Your background is support.",k:["Honest: it's a new direction","What carries over: explaining tech to non-technical people, building trust, follow-through","Marketing degree + outreach project","You're coachable and driven"],s:"In support I spent three years explaining an AI product to people who weren't technical and earning their trust, often when they were frustrated. The best part was when someone finally saw what the product could do for them. Sales is that conversation earlier in the journey. I also have a marketing degree and did a client outreach project that turned 2,243 contacts into 19 inquiries and 7 purchases, so I've seen how outreach turns into results. I'm coachable, I'm consistent, and I want to learn sales the right way.",t:"Don't pretend you've always wanted sales. 'Here's what carries over' is more believable."},
+ {c:"SOCi",q:"Tell me about a time you hit or exceeded a goal.",k:["A real goal (CSAT, daily ticket load, project result)","What you did to get there","The number"],s:"At TRACE I kept an 88% CSAT while handling 15 to 20+ tickets a day. To keep quality up at that volume, I built macros and help docs for the most common issues, which let me answer faster without sounding robotic.",t:"SOCi lists 'proven track record of hitting goals' as a must-have. Use real numbers only."},
+ {c:"SOCi",q:"How do you handle rejection?",k:["It's part of the job, not personal","Learn from each 'no'","Stay consistent","Example: angry customers at TRACE"],s:"I dealt with frustrated customers every day in support, so I'm used to not taking things personally. I focus on what I can control: the next conversation. If something isn't working, I adjust my approach instead of getting discouraged.",t:""},
+ {c:"SOCi",q:"Do you have Salesforce or CRM experience?",k:["Honest: no Salesforce yet","Used Zendesk daily (customer records, history, notes)","Learn tools fast (Sheets, Slack, AI tools)"],s:"I haven't used Salesforce yet, but I used Zendesk every day, which works similarly: tracking customer history, notes and follow-ups for every conversation. I pick up tools quickly, and I'd plan to get comfortable with Salesforce in my first couple of weeks, maybe through Trailhead before I even start.",t:"Salesforce's free Trailhead courses are a great thing to mention, especially if you actually start one."},
+ {c:"SOCi",q:"What do you know about SOCi?",k:["AI-powered marketing for multi-location brands","Genius AI / Genius Agents","Customers like Ford, Ace Hardware, Kumon","Fast Company Most Innovative"],s:"SOCi helps multi-location brands like Ford, Ace Hardware and Kumon manage local marketing (reviews, social posts, listings) across hundreds of locations, using AI agents that do the work of a huge local marketing team. As someone who builds AI workflows myself, I think that's a really compelling pitch.",t:"Look at soci.ai the day before the interview for anything new."},
+ {c:"SOCi",q:"Sell me something / pitch SOCi to me in 30 seconds.",k:["Lead with the customer's pain, not features","One clear benefit","End with a question"],s:"Managing reviews, local pages and social for hundreds of locations usually takes a big team, or it just doesn't get done. SOCi's AI agents handle that work across every location while keeping it on-brand, so marketing teams get more local visibility without hiring more people. How are you handling local marketing across your locations today?",t:"Ending with a question is the key move. Sales is about getting them talking."},
+ {c:"SOCi",q:"How do you stay organized and motivated when doing high-volume outreach?",k:["Daily targets and a routine","Track everything (you used Zendesk and Sheets)","Prioritize best-fit accounts","Review what works"],s:"I'd set daily targets and block time for calls and emails, the same way I worked through 15 to 20+ tickets a day at TRACE by triaging and keeping notes on everything. I'd track my activity and results so I can see what's working and double down on it.",t:""},
+ {c:"SOCi",q:"Are you okay with being on the phone a lot?",k:["Honest about your background (chat/email)","Comfortable talking to people","Willing to practice and improve"],s:"Most of my support work was chat and email, but I'm comfortable talking to people. At Uniqlo I helped customers face to face all day. I know phone skills improve with reps, and I'm ready to put those in.",t:"Only say this if you're actually okay with daily calls."},
  {c:"Zendesk",q:"When would you use an internal note vs a public reply?",k:["Public reply: the customer sees it","Internal note: team-only context and handoffs","Always leave notes for the next person"],s:"Public replies go to the customer. Internal notes are for the team: what I've tried, debug details, or a handoff before escalating. Good notes mean nobody has to ask the customer the same questions twice.",t:""},
 ];
 const cats=["All",...new Set(Q.map(x=>x.c))];
@@ -373,6 +423,29 @@ const M=[
  ["Healthcare / scheduling software (preferred)","No direct experience. Show interest in their mission and learn how their product works before the interview."],
 ];
 document.getElementById("tbMap").innerHTML="<tr><th>They want</th><th>Your proof</th></tr>"+M.map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join("");
+
+/* ---------- SOCi ---------- */
+const SM=[
+ ["Self-starter, hits and exceeds goals (must)","88% CSAT at 15–20+ tickets/day; built macros and docs on your own initiative"],
+ ["Phone + written communication (must)","Strong written (chat and email, 88% CSAT); in-person at Uniqlo. Phone is the gap: be honest, show willingness."],
+ ["Inside sales / pipeline experience (must)","Gap. Closest: client outreach project (2,243 contacts → 19 inquiries → 7 purchases). Don't claim sales experience you don't have."],
+ ["Explain business impact to technical + business people (must)","3 years explaining an AI camera product to non-technical customers; worked with engineering"],
+ ["Salesforce (must)","Gap. Used Zendesk daily (similar idea: records, notes, follow-ups). Mention starting Salesforce Trailhead."],
+ ["Lots of software tools (must)","Zendesk, Slack, Google Workspace, Microsoft 365, Excel, Claude, OpenClaw"],
+ ["Competitive, fast-paced (must)","High-volume queue with urgent game-day issues"],
+ ["SaaS prospecting, 1 yr (preferred)","Gap. Lean on your marketing degree and AI fluency (SOCi sells AI)."],
+];
+document.getElementById("sociMap").innerHTML="<tr><th>They want</th><th>Your proof</th></tr>"+SM.map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join("");
+const SB=[
+ ["SDR vs AE","<b>SDR</b> (you): finds and qualifies leads, books meetings and demos, closes small 'transactional' deals. <b>AE</b> (Account Executive): runs demos and closes the bigger deals. SDRs are usually measured on meetings booked and pipeline created."],
+ ["Prospecting & cadences","Prospecting = finding the right companies and people to contact. A <b>cadence</b> is a planned sequence of touches over a couple of weeks, for example call → email → LinkedIn → call → email. Most deals need many touches, so consistency wins."],
+ ["Qualifying (BANT)","Is this a real opportunity? <b>B</b>udget: can they pay? <b>A</b>uthority: are you talking to the decision-maker? <b>N</b>eed: do they have the problem SOCi solves? <b>T</b>iming: when would they buy? (Other frameworks: MEDDIC, CHAMP. Same idea.)"],
+ ["Discovery calls","A conversation to understand the prospect's situation before pitching. Ask open questions: 'How do you manage reviews across locations today?' 'What's hardest about it?' 'What happens if it doesn't get done?' Listen more than you talk, just like troubleshooting a support ticket."],
+ ["Objection handling","<b>Acknowledge → Ask → Respond.</b> 'Totally fair' → 'Can I ask what's behind that?' → address the real concern. Common ones: 'not interested', 'send me info', 'we already have a tool', 'no budget', 'bad timing'. It's a lot like de-escalation in support: stay calm and curious."],
+ ["Key terms","<b>Pipeline:</b> all the potential deals in progress. <b>Quota:</b> your target (for example, meetings booked per month). <b>OTE:</b> on-target earnings, base plus commission if you hit quota. <b>Lead / MQL / SQL:</b> a contact → marketing-qualified → sales-qualified. <b>Conversion rate:</b> % of contacts that become meetings."],
+ ["Your support → sales bridge","Everything you did in support carries over: <b>listening to find the real problem</b> (discovery), <b>calming frustrated people</b> (objection handling), <b>explaining tech simply</b> (pitching), <b>follow-through and notes</b> (pipeline management)."],
+];
+document.getElementById("sociBasics").innerHTML=SB.map(([h,b])=>`<details><summary>${h}</summary><p>${b}</p></details>`).join("");
 
 build();openTab(localStorage.getItem("ip_tab")||"cheat");
 </script>
