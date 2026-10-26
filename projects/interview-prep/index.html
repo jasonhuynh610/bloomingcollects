@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Interview Prep · Customer Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#2d2a3e; --muted:#6f6a85; --line:rgba(45,42,62,.12); --sakura:#f6a9c6; --deep:#e2729c; --paper:#fbf9fc; --mint:#74cfac; --blue:#7aaee8; --lilac:#ad98ea; --warn:#f2b66d; --r:16px; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:linear-gradient(180deg,#fbe3ee 0,var(--paper) 260px); font-family:"Zen Maru Gothic",system-ui,sans-serif; line-height:1.55; }
+    header { max-width:980px; margin:0 auto; padding:2rem 1.2rem 1rem; }
+    header a.back { color:var(--muted); font-size:.9rem; text-decoration:none; }
+    h1 { margin:.4rem 0 .2rem; font-size:1.9rem; }
+    h1 .accent { color:var(--deep); }
+    .sub { color:var(--muted); margin:0; }
+    nav.tabs { position:sticky; top:0; z-index:5; background:rgba(251,249,252,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+    nav.tabs .in { max-width:980px; margin:0 auto; padding:.6rem 1.2rem; display:flex; gap:.4rem; overflow-x:auto; }
+    nav.tabs button { border:1px solid var(--line); background:#fff; padding:.45rem .9rem; border-radius:999px; cursor:pointer; white-space:nowrap; color:var(--ink); }
+    nav.tabs button.on { background:var(--deep); color:#fff; border-color:var(--deep); }
+    main { max-width:980px; margin:0 auto; padding:1.2rem; }
+    section { display:none; } section.on { display:block; }
+    h2 { font-size:1.35rem; margin:.4rem 0 .8rem; }
+    h3 { font-size:1.05rem; margin:1.1rem 0 .4rem; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:1rem 1.1rem; margin:.7rem 0; box-shadow:0 2px 10px rgba(120,80,110,.05); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:.8rem; }
+    .pill { display:inline-block; font-size:.75rem; padding:.1rem .55rem; border-radius:999px; background:#f3eefc; color:#6a55b5; margin-right:.3rem; }
+    .pill.tb { background:#e6f6ef; color:#2f8a64; } .pill.zd { background:#e8f1fc; color:#3a6fae; }
+    .note { background:#fff7ea; border:1px solid #f6dcae; border-radius:12px; padding:.7rem .9rem; font-size:.92rem; }
+    .good { background:#eefaf4; border:1px solid #c6ebd8; border-radius:12px; padding:.7rem .9rem; font-size:.92rem; }
+    ul { padding-left:1.2rem; margin:.3rem 0; } li { margin:.2rem 0; }
+    .btn { border:0; background:var(--deep); color:#fff; padding:.55rem 1rem; border-radius:999px; cursor:pointer; font-weight:500; }
+    .btn.ghost { background:#fff; color:var(--ink); border:1px solid var(--line); }
+    .btn.mint { background:var(--mint); } .btn.warn { background:var(--warn); }
+    .row { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; }
+    select, textarea { font:inherit; border:1px solid var(--line); border-radius:12px; padding:.5rem .7rem; background:#fff; color:var(--ink); }
+    textarea { width:100%; min-height:110px; resize:vertical; }
+    .q { font-size:1.15rem; font-weight:700; margin:.3rem 0 .6rem; }
+    .reveal { display:none; margin-top:.8rem; } .reveal.show { display:block; }
+    .sample { background:#faf7fd; border-left:4px solid var(--lilac); padding:.6rem .8rem; border-radius:8px; margin:.5rem 0; }
+    .progress { height:8px; background:#f0e9f4; border-radius:99px; overflow:hidden; margin:.4rem 0 .2rem; }
+    .progress i { display:block; height:100%; background:linear-gradient(90deg,var(--sakura),var(--deep)); width:0; transition:width .3s; }
+    .timer { font-variant-numeric:tabular-nums; font-weight:700; font-size:1.4rem; }
+    details { background:#fff; border:1px solid var(--line); border-radius:12px; padding:.6rem .9rem; margin:.5rem 0; }
+    details summary { cursor:pointer; font-weight:700; }
+    table { width:100%; border-collapse:collapse; font-size:.93rem; } td, th { border-bottom:1px solid var(--line); padding:.45rem .4rem; text-align:left; vertical-align:top; }
+    .quiz-opt { display:block; width:100%; text-align:left; margin:.3rem 0; background:#fff; border:1px solid var(--line); border-radius:12px; padding:.55rem .8rem; cursor:pointer; color:var(--ink); }
+    .quiz-opt.right { background:#e6f6ef; border-color:var(--mint); } .quiz-opt.wrong { background:#fdeaea; border-color:#ec9a9a; }
+    .muted { color:var(--muted); font-size:.9rem; }
+    footer { text-align:center; color:var(--muted); font-size:.85rem; padding:2rem 1rem 3rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back" href="/">← back to the garden</a>
+    <h1>Interview Prep: <span class="accent">Customer Support</span></h1>
+    <p class="sub">Practice questions, TRACE stories, Zendesk basics and the TeamBuilder role, all in one place. Your progress and notes save in this browser.</p>
+  </header>
+
+  <nav class="tabs"><div class="in" id="tabs"></div></nav>
+
+  <main>
+    <!-- 1. CHEAT SHEET -->
+    <section id="cheat">
+      <h2>🌸 TRACE cheat sheet: what to know cold</h2>
+      <div class="grid">
+        <div class="card"><h3>The 20-second pitch</h3>
+          <p>"For about 3 years I was the support contact at TRACE, an AI-powered sports camera company for youth soccer. I handled 15–20+ tickets a day through Zendesk chat and email, helping clubs, coaches and parents with camera hardware, Wi-Fi and app issues. I kept an 88% CSAT, wrote help docs and macros for recurring issues, escalated bugs to engineering, trained new hires and ran QA on cameras before they shipped. Now I want to grow in customer success and support at a software company."</p></div>
+        <div class="card"><h3>Numbers to remember</h3>
+          <ul>
+            <li><b>Apr 2023 – Jun 2026</b> at TRACE (~3 years)</li>
+            <li><b>15–20+ tickets/day</b> (~300–400/month)</li>
+            <li><b>88% CSAT</b></li>
+            <li>Many issues solved in <b>one contact</b> (first-contact resolution)</li>
+            <li>QA on batches of <b>20+ cameras</b> with Python test scripts</li>
+            <li>4 years client-facing in total (with Uniqlo)</li>
+          </ul></div>
+        <div class="card"><h3>Who your customers were</h3>
+          <ul><li>Youth soccer <b>clubs</b> (admins buying for teams)</li><li><b>Coaches</b> recording games and sharing film</li><li><b>Parents</b> wanting to watch their kid's highlights</li></ul>
+          <p class="muted">Mostly non-technical people under time pressure (game days). That's why plain-language explanations were your superpower.</p></div>
+        <div class="card"><h3>Tools you actually used</h3>
+          <ul><li><b>Zendesk</b>: tickets, live chat, email, macros, queue</li><li><b>Slack</b>: team + engineering, and pulling up camera info and debug details</li><li><b>Google Sheets</b>: QA tracking for camera batches</li><li><b>Python</b> test scripts for QA</li><li>Google Workspace, Microsoft 365, Excel</li><li><b>Claude + OpenClaw</b>: AI automation</li></ul></div>
+      </div>
+
+      <h3>🔑 What to leverage (your strengths)</h3>
+      <div class="grid">
+        <div class="good"><b>Hardware + software troubleshooting.</b> You fixed physical cameras, Wi-Fi and the app. Most support people only know software.</div>
+        <div class="good"><b>Customers under pressure.</b> Game-day deadlines taught you to stay calm and fast.</div>
+        <div class="good"><b>Documentation.</b> You turned repeat questions into macros and help docs. This is exactly what TeamBuilder wants.</div>
+        <div class="good"><b>Working with engineering.</b> You reproduced bugs and wrote clear escalation reports.</div>
+        <div class="good"><b>QA mindset.</b> You caught problems before customers did, so you think about prevention, not just fixing.</div>
+        <div class="good"><b>Training others.</b> You trained new hires. That's the start of leadership experience.</div>
+        <div class="good"><b>AI fluency.</b> You built real AI workflows (OpenClaw). Lots of support teams want this right now.</div>
+        <div class="good"><b>Marketing degree.</b> You understand the customer journey and messaging.</div>
+      </div>
+
+      <h3>⚠️ Stay honest: how to handle gaps</h3>
+      <div class="card"><table>
+        <tr><th>If they ask about…</th><th>Say something like</th></tr>
+        <tr><td>Phone support</td><td>"Most of my support was chat and email, and I'm very comfortable on video and phone calls. I'd ramp up fast."</td></tr>
+        <tr><td>Owning accounts / renewals</td><td>"My role was ticket-based. I didn't own a book of accounts, but I built relationships with repeat customers like club admins and coaches."</td></tr>
+        <tr><td>SaaS experience</td><td>"TRACE was hardware plus an app and cloud platform, so I supported software every day: app issues, uploads, accounts and bugs."</td></tr>
+        <tr><td>Zendesk admin (triggers, reporting)</td><td>"I used Zendesk daily and built macros. I understand how triggers, automations and SLAs work, and I'd love to go deeper on the admin side."</td></tr>
+        <tr><td>Team lead experience</td><td>"I wasn't a formal lead, but I trained new hires on our workflows and ticket standards."</td></tr>
+        <tr><td>Your official title</td><td>"My official title was technician, but my day-to-day was customer support and QA." Use this if the background check shows a different title.</td></tr>
+      </table></div>
+      <p class="note">Rule of thumb: never claim something you can't explain with a real example. A believable "I haven't done that yet, but here's the closest thing I've done" beats a fake yes.</p>
+    </section>
+
+    <!-- 2. PRACTICE -->
+    <section id="practice">
+      <h2>🎯 Practice questions</h2>
+      <div class="card">
+        <div class="row">
+          <label>Category <select id="cat"></select></label>
+          <label><input type="checkbox" id="onlyWeak" /> Only "needs work"</label>
+          <button class="btn ghost" id="shuffle">Shuffle</button>
+        </div>
+        <div class="progress"><i id="bar"></i></div>
+        <div class="muted" id="stat"></div>
+      </div>
+      <div class="card" id="qcard">
+        <div id="qtags"></div>
+        <div class="q" id="qtext"></div>
+        <textarea id="mine" placeholder="Type your answer out loud first, then write it here (saves automatically)…"></textarea>
+        <div class="row" style="margin-top:.6rem">
+          <button class="btn" id="show">Show key points + sample</button>
+          <button class="btn mint" id="got">✓ Got it</button>
+          <button class="btn warn" id="weak">↻ Needs work</button>
+          <button class="btn ghost" id="prev">← Prev</button>
+          <button class="btn ghost" id="next">Next →</button>
+        </div>
+        <div class="reveal" id="rev">
+          <h3>Hit these points</h3><ul id="keys"></ul>
+          <h3>Sample answer</h3><div class="sample" id="samp"></div>
+          <p class="muted" id="tip"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MOCK -->
+    <section id="mock">
+      <h2>⏱️ Mock interview</h2>
+      <div class="card">
+        <p>Random question, 2 minutes. Answer <b>out loud</b> as if you're on Zoom. Aim for 60–90 seconds and use STAR: <b>S</b>ituation, <b>T</b>ask, <b>A</b>ction, <b>R</b>esult.</p>
+        <div class="row"><button class="btn" id="mstart">Give me a question</button><span class="timer" id="mtime">2:00</span></div>
+        <div class="q" id="mq" style="margin-top:.8rem"></div>
+        <div class="reveal" id="mrev"><h3>Did you hit…</h3><ul id="mkeys"></ul></div>
+        <button class="btn ghost" id="mshow" style="display:none">Check my answer</button>
+      </div>
+    </section>
+
+    <!-- 4. STORIES -->
+    <section id="stories">
+      <h2>📖 TRACE stories (STAR)</h2>
+      <p class="note"><b>Make these yours.</b> They're built from the kind of work you did at TRACE. Before an interview, swap in the real details you remember (which customer, what broke, what happened). Interviewers ask follow-ups, so a real story beats a polished fake one.</p>
+      <div id="storyList"></div>
+    </section>
+
+    <!-- 5. ZENDESK -->
+    <section id="zendesk">
+      <h2>🎫 Zendesk crash course</h2>
+      <div class="good">You already used Zendesk daily (tickets, chat, email, macros, the queue). This tab fills in the <b>admin and reporting</b> side so you can talk about it confidently.</div>
+      <div id="zdList"></div>
+      <h3>🧠 Quick quiz</h3>
+      <div class="card" id="quiz"></div>
+    </section>
+
+    <!-- 6. CS FUNDAMENTALS -->
+    <section id="fund">
+      <h2>💬 Customer support fundamentals</h2>
+      <div id="fundList"></div>
+    </section>
+
+    <!-- 7. TEAMBUILDER -->
+    <section id="tb">
+      <h2>🏥 TeamBuilder: Customer Support Specialist</h2>
+      <div class="card"><b>Company:</b> healthcare SaaS (workforce management and scheduling for healthcare organizations). <b>Pay:</b> $73–75K + bonus + equity. Remote. Reports to the Customer Success Manager. <b>Applied 10/26.</b></div>
+      <h3>What they asked on the application</h3>
+      <div class="card"><ol>
+        <li>Tell us about a time you helped a frustrated or confused customer resolve an issue. (Situation, communication, outcome)</li>
+        <li>Managing 10–20 tickets a day: how do you stay organized so nothing falls through the cracks?</li>
+        <li>What professional tools do you rely on for task management, communication, process improvement and coordination?</li>
+        <li>Can you work weekends?</li>
+      </ol><p class="muted">They'll likely dig into these same topics in the interview. Practice them in the TeamBuilder category on the Practice tab.</p></div>
+      <h3>What experience they want → what you've got</h3>
+      <div class="card"><table id="tbMap"></table></div>
+      <h3>Words to use (they're in the job post)</h3>
+      <div class="card"><span class="pill tb">Tier 1–3</span><span class="pill tb">self-service</span><span class="pill tb">knowledge base</span><span class="pill tb">SOPs</span><span class="pill tb">macros &amp; workflows</span><span class="pill tb">reduce ticket volume</span><span class="pill tb">CSAT</span><span class="pill tb">KPIs</span><span class="pill tb">customer advocate</span><span class="pill tb">cross-functional</span><span class="pill tb">scalable support</span><span class="pill tb">customer health</span></div>
+      <h3>Good questions to ask THEM</h3>
+      <div class="card"><ul>
+        <li>What does a typical day look like? How are tickets split between Tier 1 and Tier 3?</li>
+        <li>What are the top reasons customers reach out right now?</li>
+        <li>How do you measure success in this role in the first 90 days?</li>
+        <li>How much of the knowledge base exists today, and where are the biggest gaps?</li>
+        <li>How does support work with Customer Success and Implementation on new customers?</li>
+        <li>What does growth look like from this role, for example toward Customer Success?</li>
+      </ul></div>
+    </section>
+  </main>
+  <footer>🌱 Practice out loud. Your answers save only in this browser.</footer>
+
+<script>
+const TABS=[["cheat","Cheat sheet"],["practice","Practice"],["mock","Mock interview"],["stories","TRACE stories"],["zendesk","Zendesk"],["fund","CS fundamentals"],["tb","TeamBuilder"]];
+const tabsEl=document.getElementById("tabs");
+function openTab(id){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===id));tabsEl.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.id===id));localStorage.setItem("ip_tab",id);scrollTo({top:0});}
+TABS.forEach(([id,l])=>{const b=document.createElement("button");b.textContent=l;b.dataset.id=id;b.onclick=()=>openTab(id);tabsEl.appendChild(b);});
+
+/* ---------- QUESTIONS ---------- */
+const Q=[
+ // Intro / motivation
+ {c:"Intro",q:"Tell me about yourself.",k:["Present: what you do and your strength (support + troubleshooting)","Past: TRACE, 3 years, 15–20+ tickets/day, 88% CSAT, docs and QA","Future: why this role and company"],s:"I've spent the last three years in customer support at TRACE, an AI-powered sports camera company for youth soccer. I was the go-to person for clubs, coaches and parents, handling 15 to 20 tickets a day in Zendesk across hardware, Wi-Fi and app issues, and I kept an 88% CSAT. Beyond tickets, I wrote help docs and macros for common problems, escalated bugs to engineering and trained new hires. Now I'm looking to bring that to a software company where I can keep growing in support and customer success, and that's what drew me here.",t:"Keep it under 90 seconds. Don't recite your whole resume."},
+ {c:"Intro",q:"Why are you interested in this role?",k:["Something specific about the company or product","The parts of the job you enjoy (teaching, solving, docs)","A link to your TRACE experience"],s:"What I enjoyed most at TRACE was helping someone go from frustrated to confident, and then fixing the root cause so the next person didn't hit the same problem. This role has both: solving tickets and improving docs and processes. I also like that you serve healthcare teams, where getting things right really matters.",t:"Always research the company first and mention one real detail."},
+ {c:"Intro",q:"Why did you leave TRACE?",k:["Short, honest and positive","No complaining about the old company","Focus on what you're moving toward"],s:"My time at TRACE wrapped up in June. I learned a lot there, and now I'm looking for a role at a software company where I can grow in support and eventually customer success.",t:"Fill in the true reason in one sentence, then pivot forward. Keep it brief."},
+ {c:"Intro",q:"Where do you see yourself in 2–3 years?",k:["Growing within the company","Customer success or senior support","Getting better at docs, process and mentoring"],s:"I'd like to be someone the team relies on, owning harder Tier 2 and 3 issues, helping shape the knowledge base and mentoring newer teammates. Longer term I'm interested in customer success, working more closely with customers on getting value from the product.",t:""},
+ // Behavioral
+ {c:"Behavioral",q:"Tell me about a time you helped a frustrated or confused customer.",k:["Acknowledge emotion first","Ask simple questions to find the real problem","Plain-language steps, one at a time","Outcome + what you improved afterward"],s:"A coach messaged the night before a tournament because his game video wasn't showing up. I acknowledged the time pressure and told him I'd stay with him until it was fixed. A few questions showed his camera was on weak Wi-Fi, so uploads kept stalling. I walked him through moving it closer to the router, one step at a time. The video uploaded while we were still chatting and he left a positive rating. Since it came up often, I turned the fix into a macro.",t:"Use a real ticket you remember and swap in the true details."},
+ {c:"Behavioral",q:"Tell me about a time you had to escalate an issue.",k:["How you knew it needed escalation (reproduced it, beyond your scope)","Clear write-up: steps, device info, logs","Kept the customer updated","Outcome"],s:"A customer's camera kept failing uploads even after the usual fixes. I reproduced the problem, pulled the camera's info and debug details, and escalated to engineering with clear steps, what we'd already tried and what I was seeing. I told the customer it was with our engineers and when to expect an update, and I checked back so they weren't left waiting. Once engineering confirmed a fix, I verified it with the customer.",t:"Show judgment: you escalate after doing your homework, not as a first step."},
+ {c:"Behavioral",q:"Tell me about a process you improved.",k:["The problem (repeat tickets, wasted time)","What you built (macro, doc, guide)","Result: faster replies, fewer repeat questions"],s:"I noticed the same Wi-Fi and upload questions coming in again and again. I wrote clear troubleshooting docs and Zendesk macros for them, so the team could answer in seconds and give consistent steps. It cut down back-and-forth and freed up time for harder tickets.",t:"If you remember any real numbers (time saved, fewer tickets), add them."},
+ {c:"Behavioral",q:"Tell me about a time you made a mistake.",k:["A real but small mistake","You owned it fast","What you did to fix it","What you changed so it won't happen again"],s:"Early on I sent a customer the wrong troubleshooting steps for their camera model. When they replied that it didn't work, I apologized, sent the right steps and followed up to make sure it was resolved. After that I always double-checked the model and setup before replying, and it's part of why I later made model-specific macros.",t:"Replace this with a mistake you actually made. Interviewers can tell when it's generic."},
+ {c:"Behavioral",q:"Tell me about a time you trained or helped a teammate.",k:["Who and what you trained","How (shadowing, docs, macros)","Result"],s:"When new hires joined support, I trained them on our ticket workflow, how we handled common camera and app issues, and our standards for replies and escalations. I pointed them to the docs and macros I'd built so they could ramp up faster and stay consistent.",t:"This is your answer to 'leadership experience.'"},
+ {c:"Behavioral",q:"Tell me about a time you worked with another team (engineering or product).",k:["Why you needed them","How you communicated (clear reports in Slack)","Shared customer feedback","Outcome"],s:"I worked with engineering constantly. When I found a bug, I reproduced it and sent a clear report in Slack with steps, camera info and debug details. I also passed along recurring customer feedback so the team could see patterns, not just one-off complaints.",t:""},
+ {c:"Behavioral",q:"Tell me about a time you went above and beyond.",k:["A specific customer or problem","The extra step you took","Impact"],s:"Beyond fixing tickets, I ran QA on camera batches before they shipped, using Python test scripts to catch module, board and battery faults. Catching those early meant customers never had to contact us about them.",t:""},
+ // Situational
+ {c:"Situational",q:"A customer is angry and demanding a refund. What do you do?",k:["Stay calm, let them vent, acknowledge","Apologize for the experience (not blame)","Find out what happened and what they need","Know the policy, offer what you can, escalate if needed","Follow up"],s:"First I'd let them explain and acknowledge how frustrating it is. Then I'd ask a few questions to understand what went wrong. If I can fix the underlying issue, that often matters more than the refund. If a refund is the right call and it's within policy, I'd process it or bring in whoever approves it, and tell them exactly what happens next and when.",t:"Never promise something you can't approve."},
+ {c:"Situational",q:"You have 20 tickets and three are urgent. How do you prioritize?",k:["Triage: urgent and blocking first","Then oldest first / SLA","Quick acknowledgment replies","Escalate or ask for help if overloaded"],s:"I'd scan the queue first and pull out anything urgent: someone fully blocked, or with a deadline. I'd handle those, and if I can't solve one right away, I'd at least send an update so they know I'm on it. Then I'd work the rest oldest first, using macros for common issues to move faster. If the queue were still too heavy, I'd flag it to my lead early.",t:"This is the TeamBuilder question; practice it until it's smooth."},
+ {c:"Situational",q:"You don't know the answer to a customer's question. What do you do?",k:["Be honest, don't guess","Set expectations","Check docs, ask the team","Follow up with the answer and document it"],s:"I'd tell the customer I want to get them the right answer, not a guess, and give them a time to expect an update. Then I'd check the knowledge base, ask a teammate or engineering, and follow up. If it was a gap in our docs, I'd write it up so the next person has the answer.",t:""},
+ {c:"Situational",q:"A customer reports a bug you can't reproduce.",k:["Gather details: device, version, steps, screenshots","Try their exact setup","Escalate with everything you have","Keep the customer in the loop"],s:"I'd ask for specifics: device, app version, exact steps, screenshots or a video. I'd try to match their setup. If I still couldn't reproduce it, I'd escalate to engineering with everything I'd gathered and let the customer know it's being looked into, then follow up.",t:""},
+ {c:"Situational",q:"How would you reduce ticket volume?",k:["Look at trends: top reasons for contact","Fix with self-service: help articles and FAQs","Macros for consistency","Send product feedback to fix the root cause"],s:"I'd look at what people contact us about most, then attack the top few. Some can be solved with better help center articles or in-app guidance, some need a product fix, which I'd raise with the product team with data. At TRACE, writing docs for our most common issues did exactly this.",t:"TeamBuilder specifically wants this. Say 'self-service' and 'root cause.'"},
+ {c:"Situational",q:"A customer keeps replying to a solved ticket with new questions. What do you do?",k:["Answer helpfully","Split unrelated issues into new tickets","Make sure the original issue is truly solved","Check whether they need onboarding or training"],s:"I'd make sure the original issue is actually resolved, then help with the new question. If it's unrelated, I'd open a new ticket so each issue is tracked cleanly. If they keep having questions, they may need a quick training session or better resources, which I'd suggest.",t:""},
+ // TeamBuilder
+ {c:"TeamBuilder",q:"Why TeamBuilder / why healthcare SaaS?",k:["Mission: helping healthcare teams operate better","Elevated support: docs, process, cross-team","Fits your experience and growth goals"],s:"I like that this role goes beyond closing tickets: improving docs, workflows and self-service, and working with Customer Success, Product and Engineering. That's the part of support I enjoyed most at TRACE. And supporting healthcare teams means the work has real impact; when scheduling software works, people can focus on patients.",t:""},
+ {c:"TeamBuilder",q:"Tell me about documentation or knowledge base content you created.",k:["What you wrote (troubleshooting docs, macros)","Why (recurring issues)","Who used it (customers, the team, new hires)","Impact"],s:"At TRACE I created troubleshooting docs and Zendesk macros for our most common issues: Wi-Fi, uploads and camera setup. The team used them to answer faster and more consistently, and I used them when training new hires.",t:"They list this as REQUIRED, so lead with it."},
+ {c:"TeamBuilder",q:"What's the difference between Tier 1, 2 and 3 support? Give an example of each from TRACE.",k:["Tier 1: common how-to, fixed with known steps","Tier 2: deeper troubleshooting and investigation","Tier 3: engineering-level bugs and fixes"],s:"Tier 1 at TRACE was things like resetting the camera or reconnecting Wi-Fi, solved with known steps or a macro. Tier 2 was deeper troubleshooting: digging into camera info and debug details to find why uploads kept failing. Tier 3 was real bugs, which I reproduced and escalated to engineering with a clear report.",t:""},
+ {c:"TeamBuilder",q:"How would you tailor support based on customer health or account context?",k:["Know who the customer is (new, at-risk, big account)","New customers: more hand-holding","Frustrated or at-risk: faster, personal, loop in CS","Use notes and history"],s:"I'd look at the context before replying: are they brand new, a long-time customer, or someone who's had a rough few weeks? A new customer might need more guidance and links to resources; someone frustrated or at risk gets a faster, more personal response, and I'd loop in their Customer Success Manager. At TRACE, a club admin setting up a whole team needed a very different approach than a parent with one question.",t:""},
+ {c:"TeamBuilder",q:"What support KPIs are you familiar with?",k:["CSAT (yours: 88%)","First response time","Resolution time","First contact resolution","Backlog and ticket volume"],s:"CSAT is the one I tracked most; mine was 88%. I also paid attention to first response time, how fast tickets got resolved, and resolving things in one contact. And I watched for recurring issues, because those tell you where to improve docs or the product.",t:"See the CS fundamentals tab for definitions."},
+ {c:"TeamBuilder",q:"Do you have experience with Zendesk workflows, automation or reporting?",k:["Honest: daily user, built macros","Understand triggers, automations, views, SLAs","Eager to go deeper into admin"],s:"I used Zendesk every day at TRACE: working the queue, live chat, email and building macros. I understand how triggers, automations, views and SLA policies work, and I'd be excited to get deeper into the admin and reporting side here.",t:"Don't claim you configured triggers unless you did."},
+ {c:"TeamBuilder",q:"Can you work weekends?",k:["Be honest about availability","Show flexibility","State a preference politely if you have one"],s:"Yes, I'm available to work weekends as needed. If there's a rotation, I'd prefer a schedule with one weekend day.",t:""},
+ // Zendesk / technical
+ {c:"Zendesk",q:"What's the difference between a macro, a trigger and an automation?",k:["Macro: manual, the agent clicks it","Trigger: runs instantly when a ticket is created or updated","Automation: time-based, checks tickets about every hour"],s:"A macro is something an agent applies by hand, like a canned reply plus field updates. A trigger fires automatically the moment a ticket is created or updated, like sending an acknowledgment email. An automation is time-based, for example reminding a customer after a ticket has been pending for 3 days, or closing solved tickets.",t:""},
+ {c:"Zendesk",q:"Walk me through the Zendesk ticket statuses.",k:["New → Open → Pending / On-hold → Solved → Closed","Pending = waiting on the customer","On-hold = waiting on a third party or internal team","Closed tickets can't be reopened"],s:"New is unassigned and untouched. Open means an agent is working it. Pending means we're waiting on the customer. On-hold means we're waiting on someone else, like engineering. Solved means we think it's fixed; the customer can still reply to reopen it. After a set time it becomes Closed, and new replies create a follow-up ticket.",t:""},
+ {c:"Zendesk",q:"When would you use an internal note vs a public reply?",k:["Public reply: the customer sees it","Internal note: team-only context and handoffs","Always leave notes for the next person"],s:"Public replies go to the customer. Internal notes are for the team: what I've tried, debug details, or a handoff before escalating. Good notes mean nobody has to ask the customer the same questions twice.",t:""},
+];
+const cats=["All",...new Set(Q.map(x=>x.c))];
+const catSel=document.getElementById("cat");cats.forEach(c=>{const o=document.createElement("option");o.textContent=c;catSel.appendChild(o);});
+let st=JSON.parse(localStorage.getItem("ip_status")||"{}"), ans=JSON.parse(localStorage.getItem("ip_ans")||"{}");
+let list=[],idx=0;
+function save(){localStorage.setItem("ip_status",JSON.stringify(st));localStorage.setItem("ip_ans",JSON.stringify(ans));}
+function build(){const c=catSel.value,w=document.getElementById("onlyWeak").checked;list=Q.map((x,i)=>i).filter(i=>(c==="All"||Q[i].c===c)&&(!w||st[i]==="weak"));idx=0;render();}
+function render(){
+  const got=Object.values(st).filter(v=>v==="got").length;
+  document.getElementById("bar").style.width=(got/Q.length*100)+"%";
+  document.getElementById("stat").textContent=`${got} of ${Q.length} marked "got it" · ${Object.values(st).filter(v=>v==="weak").length} need work`;
+  const card=document.getElementById("qcard");
+  if(!list.length){document.getElementById("qtext").textContent="Nothing here. Try another category or uncheck the filter.";document.getElementById("qtags").innerHTML="";document.getElementById("rev").classList.remove("show");return;}
+  const i=list[idx],x=Q[i];
+  document.getElementById("qtags").innerHTML=`<span class="pill ${x.c==="TeamBuilder"?"tb":x.c==="Zendesk"?"zd":""}">${x.c}</span><span class="muted">${idx+1} / ${list.length}${st[i]==="got"?" · ✓ got it":st[i]==="weak"?" · ↻ needs work":""}</span>`;
+  document.getElementById("qtext").textContent=x.q;
+  document.getElementById("mine").value=ans[i]||"";
+  document.getElementById("keys").innerHTML=x.k.map(k=>`<li>${k}</li>`).join("");
+  document.getElementById("samp").textContent=x.s;
+  document.getElementById("tip").textContent=x.t?("💡 "+x.t):"";
+  document.getElementById("rev").classList.remove("show");
+}
+document.getElementById("mine").addEventListener("input",e=>{if(list.length){ans[list[idx]]=e.target.value;save();}});
+document.getElementById("show").onclick=()=>document.getElementById("rev").classList.toggle("show");
+document.getElementById("got").onclick=()=>{if(!list.length)return;st[list[idx]]="got";save();next();};
+document.getElementById("weak").onclick=()=>{if(!list.length)return;st[list[idx]]="weak";save();next();};
+function next(){if(list.length){idx=(idx+1)%list.length;render();}}
+document.getElementById("next").onclick=next;
+document.getElementById("prev").onclick=()=>{if(list.length){idx=(idx-1+list.length)%list.length;render();}};
+document.getElementById("shuffle").onclick=()=>{list.sort(()=>Math.random()-.5);idx=0;render();};
+catSel.onchange=build;document.getElementById("onlyWeak").onchange=build;
+
+/* ---------- MOCK ---------- */
+let mt=null,mleft=120,mi=0;
+function fmt(s){return Math.floor(s/60)+":"+String(s%60).padStart(2,"0");}
+document.getElementById("mstart").onclick=()=>{
+  mi=Math.floor(Math.random()*Q.length);document.getElementById("mq").textContent=Q[mi].q;
+  document.getElementById("mkeys").innerHTML=Q[mi].k.map(k=>`<li>${k}</li>`).join("");
+  document.getElementById("mrev").classList.remove("show");document.getElementById("mshow").style.display="inline-block";
+  clearInterval(mt);mleft=120;document.getElementById("mtime").textContent=fmt(mleft);
+  mt=setInterval(()=>{mleft--;document.getElementById("mtime").textContent=fmt(Math.max(mleft,0));if(mleft<=0){clearInterval(mt);document.getElementById("mrev").classList.add("show");}},1000);
+};
+document.getElementById("mshow").onclick=()=>{clearInterval(mt);document.getElementById("mrev").classList.add("show");};
+
+/* ---------- STORIES ---------- */
+const S=[
+ {t:"Game-day upload emergency",u:"frustrated customer · urgency · troubleshooting",s:"A coach contacted live chat the night before a tournament; his recorded game wasn't showing in the app.",a:"Acknowledged the stress and committed to staying with him. Asked targeted questions and found weak Wi-Fi was stalling the upload. Walked him through moving the camera closer to the router and checking upload status, one step at a time.",r:"The video uploaded during the chat, he shared it with his team and left a positive rating. I turned the fix into a macro."},
+ {t:"Bug I couldn't fix myself",u:"escalation · working with engineering",s:"A camera kept failing in a way our standard fixes didn't solve.",a:"Reproduced it, pulled camera info and debug details (via Slack), and escalated to engineering with clear steps, what we'd tried and what I observed. Updated the customer on what to expect and followed up.",r:"Engineering confirmed a fix, and I verified it with the customer before closing the ticket."},
+ {t:"Same question, over and over",u:"process improvement · documentation · reducing volume",s:"Wi-Fi, upload and setup questions kept coming in every day.",a:"Wrote troubleshooting docs and Zendesk macros for the most common issues.",r:"Faster, consistent replies across the team, fewer back-and-forth messages, and more time for complex tickets. The docs also became training material."},
+ {t:"Upset parent",u:"de-escalation · empathy",s:"A parent was upset they couldn't watch their kid's game footage.",a:"Let them vent, acknowledged that missing those moments is frustrating, apologized for the experience, then focused on what I could do right now and explained each step simply.",r:"Resolved the access or upload problem and the tone completely changed by the end of the chat."},
+ {t:"Training new hires",u:"leadership · teamwork",s:"New team members joined support.",a:"Trained them on our ticket workflow, common camera and app issues, escalation standards and how to use the docs and macros.",r:"They ramped up faster and gave customers consistent answers."},
+ {t:"Catching problems before customers did",u:"QA mindset · going above and beyond",s:"Cameras shipped in batches to clubs and teams.",a:"Ran pre-shipment QA on batches of 20+ cameras using Python test scripts and tracked results in Google Sheets, diagnosing module, board and battery faults.",r:"Faulty units were caught before shipping, so customers never had to deal with them, which also meant fewer support tickets."},
+ {t:"Busy queue day",u:"prioritization · organization",s:"A heavy day with 15–20+ tickets and several urgent ones (game-day issues).",a:"Triaged urgent and blocking issues first, sent quick status updates on anything that needed more time, worked the rest oldest first and used macros for common issues. Left clear notes on every ticket.",r:"Nothing slipped, and urgent customers were unblocked before their games."},
+ {t:"Using AI to work smarter",u:"AI fluency · initiative",s:"I wanted to cut repetitive research and tracking work.",a:"Built an AI agent workflow with Claude and OpenClaw that checks sites on a schedule, filters by my criteria, sends a summary and updates a Google Sheet. I added rules and review steps when it made mistakes.",r:"A lot of manual checking became a quick review, and I learned where AI needs human judgment."},
+];
+document.getElementById("storyList").innerHTML=S.map(x=>`<details><summary>${x.t} <span class="muted">· ${x.u}</span></summary><p><b>Situation:</b> ${x.s}</p><p><b>Action:</b> ${x.a}</p><p><b>Result:</b> ${x.r}</p><p class="muted">✏️ Add the real details: when, who, what exactly broke.</p></details>`).join("");
+
+/* ---------- ZENDESK ---------- */
+const Z=[
+ ["Tickets & channels","A ticket is one customer request. It can come from email, live chat (Messaging), web forms, phone (Zendesk Talk) or social. Every reply on that issue lives in the same ticket thread."],
+ ["Ticket statuses","<b>New</b> (unassigned) → <b>Open</b> (being worked) → <b>Pending</b> (waiting on the customer) / <b>On-hold</b> (waiting on a third party or internal team) → <b>Solved</b> (fixed; the customer can reply to reopen) → <b>Closed</b> (locked after a set time by an automation; new replies create a follow-up ticket)."],
+ ["Priority & type","Priority: Low, Normal, High, Urgent. Type: <b>Question</b>, <b>Incident</b> (one customer hit a known problem), <b>Problem</b> (the root issue many incidents link to; solving it can solve all linked incidents), <b>Task</b> (a to-do with a due date)."],
+ ["Public reply vs internal note","Public replies go to the customer. Internal notes are team-only and hold context, troubleshooting so far and handoffs. Good notes mean no one re-asks the customer."],
+ ["Macros","Saved actions an agent applies <b>manually</b>: a canned reply plus field changes (tags, status, priority). Best for common questions. Personalize the greeting so it doesn't feel robotic. <i>You built these at TRACE.</i>"],
+ ["Triggers","Business rules that fire <b>immediately</b> when a ticket is created or updated and matches conditions. Examples: auto-reply 'we got your request', route tickets that mention 'billing' to the billing group, notify the assignee."],
+ ["Automations","<b>Time-based</b> rules that check tickets about every hour. Examples: remind the customer after 3 days in Pending, close tickets X days after Solved, escalate tickets with no reply after 24 hours."],
+ ["Views","Saved, filtered lists of tickets, like 'My open tickets', 'Urgent, unassigned' or 'Pending over 3 days'. Agents work the queue from views."],
+ ["Groups & routing","Groups are teams (Tier 1, Tier 2, Billing). Tickets get routed to groups by triggers or omnichannel routing based on skills, capacity or priority."],
+ ["Tags & ticket fields","Tags are labels (wifi_issue, bug, refund) used for routing, reporting and triggers. Custom ticket fields capture structured info, like product model or app version."],
+ ["SLA policies","Service-level targets like <b>first reply time</b>, <b>next reply time</b> and <b>requester wait time</b>, set by priority (for example, Urgent first reply within 1 hour). Zendesk shows countdown badges and flags breaches."],
+ ["CSAT surveys","After a ticket is solved, Zendesk can ask 'How would you rate the support you received?' (good/bad, plus an optional comment). CSAT % = good ratings ÷ all ratings. <i>Yours: 88%.</i>"],
+ ["Help Center / Guide (knowledge base)","The customer-facing self-service site with articles and FAQs. Agents can link articles in replies, and good articles deflect tickets (customers solve it themselves). Ties directly to 'self-service' in TeamBuilder's post."],
+ ["Explore (reporting)","Zendesk's analytics: ticket volume, first reply time, resolution time, CSAT, backlog and agent performance. Used for KPI reporting and spotting trends."],
+ ["Side conversations","Start a separate email or Slack thread from inside a ticket to ask another team (like engineering) without the customer seeing it."],
+ ["AI in Zendesk","Newer Zendesk features include AI agents (bots that answer common questions), suggested replies, ticket summaries and intent detection. Good to know because you're AI-fluent."],
+];
+document.getElementById("zdList").innerHTML=Z.map(([h,b])=>`<details><summary>${h}</summary><p>${b}</p></details>`).join("");
+const QZ=[
+ ["A customer hasn't replied in 3 days. Which status was the ticket most likely in?",["Open","Pending","On-hold","Closed"],1],
+ ["You're waiting on engineering to fix a bug. Which status fits best?",["Pending","Solved","On-hold","New"],2],
+ ["Which runs automatically the instant a ticket is created?",["Macro","Trigger","View","Automation"],1],
+ ["Which is applied manually by an agent?",["Macro","Trigger","Automation","SLA"],0],
+ ["'Close tickets 4 days after Solved' is an example of a…",["Trigger","Macro","Automation","View"],2],
+ ["Fifty customers report the same outage. In Zendesk you'd link their Incident tickets to one…",["Task","Question","Problem","Macro"],2],
+ ["Where do help articles live for self-service?",["Explore","Help Center / Guide","Views","Side conversations"],1],
+ ["Which metric measures how happy customers were with support?",["FRT","CSAT","Backlog","AHT"],1],
+];
+let qi=0,score=0;
+function quiz(){const el=document.getElementById("quiz");if(qi>=QZ.length){el.innerHTML=`<p><b>Score: ${score}/${QZ.length}</b> ${score===QZ.length?"🌸 Perfect!":"Review the cards above and try again."}</p><button class="btn" id="qr">Retake</button>`;document.getElementById("qr").onclick=()=>{qi=0;score=0;quiz();};return;}
+ const [q,o,a]=QZ[qi];el.innerHTML=`<p class="muted">Question ${qi+1} of ${QZ.length}</p><p class="q">${q}</p>`+o.map((x,i)=>`<button class="quiz-opt" data-i="${i}">${x}</button>`).join("");
+ el.querySelectorAll(".quiz-opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;el.querySelectorAll(".quiz-opt").forEach(z=>{z.disabled=true;if(+z.dataset.i===a)z.classList.add("right");});if(i===a)score++;else b.classList.add("wrong");setTimeout(()=>{qi++;quiz();},1100);});}
+quiz();
+
+/* ---------- FUNDAMENTALS ---------- */
+const F=[
+ ["Support KPIs (know these terms)",`<table><tr><th>Metric</th><th>What it means</th></tr>
+ <tr><td><b>CSAT</b></td><td>Customer satisfaction: % of positive ratings after a ticket. Yours: 88%.</td></tr>
+ <tr><td><b>FRT</b> (first response time)</td><td>How long until the customer gets the first human reply.</td></tr>
+ <tr><td><b>Resolution time</b></td><td>How long from ticket created to solved.</td></tr>
+ <tr><td><b>FCR</b> (first contact resolution)</td><td>% of issues solved in one interaction. You "typically resolved issues in a single contact."</td></tr>
+ <tr><td><b>Backlog</b></td><td>How many open tickets are waiting.</td></tr>
+ <tr><td><b>Ticket volume</b></td><td>How many tickets come in (yours: ~15–20+ handled per day).</td></tr>
+ <tr><td><b>Deflection</b></td><td>Issues customers solve themselves with help articles, without opening a ticket.</td></tr>
+ <tr><td><b>NPS</b></td><td>Net Promoter Score: how likely customers are to recommend you (0–10).</td></tr>
+ <tr><td><b>CES</b></td><td>Customer Effort Score: how easy it was to get help.</td></tr>
+ <tr><td><b>AHT</b></td><td>Average handle time, mostly used in phone and chat teams.</td></tr></table>`],
+ ["Tier 1 / Tier 2 / Tier 3","<b>Tier 1:</b> common questions and known fixes (resets, how-tos, macros). <b>Tier 2:</b> deeper troubleshooting, investigating logs, configs and account data. <b>Tier 3:</b> engineering-level, real bugs needing code fixes. <i>At TRACE you did Tier 1–2 and escalated to Tier 3 with reproduction steps.</i>"],
+ ["De-escalation framework (HEARD)","<b>H</b>ear them out without interrupting → <b>E</b>mpathize ('I'd be frustrated too') → <b>A</b>pologize for the experience → <b>R</b>esolve, or give a clear plan → <b>D</b>iagnose afterward why it happened and prevent it. Tip: never argue, focus on what you <i>can</i> do and give a time for the next update."],
+ ["Writing great support replies","Use their name. Restate the problem in one line so they know you understand. Give numbered steps, one action each. Avoid jargon (say 'restart the camera,' not 'power-cycle the device'). End with what happens next. Read it once as if you're the customer."],
+ ["Good escalations","Before escalating: reproduce it, check the docs, gather details (device, version, steps, screenshots, logs). Write: what's happening, the exact steps, expected vs actual result, what you tried and the customer impact. Tell the customer what to expect, and follow up even if there's no news yet."],
+ ["Support vs Customer Success","<b>Support</b> is reactive: the customer has a problem and you fix it. <b>Customer success</b> is proactive: helping customers get value, adopt the product and stay (onboarding, check-ins, renewals). Your goal path: support → CS specialist → CSM. Docs, onboarding and spotting trends are your bridge."],
+ ["Self-service & reducing tickets","Look at the top contact reasons → write or improve help articles → add in-product tips → share product feedback to fix root causes → measure whether ticket volume drops. This is the 'scalable support' TeamBuilder keeps mentioning."],
+];
+document.getElementById("fundList").innerHTML=F.map(([h,b])=>`<details><summary>${h}</summary><div style="margin-top:.5rem">${b}</div></details>`).join("");
+
+/* ---------- TEAMBUILDER MAP ---------- */
+const M=[
+ ["3+ years in support / CS (required)","~3 years at TRACE + Uniqlo customer service = 4 years client-facing"],
+ ["SaaS environment (required)","TRACE app + cloud platform: you supported app, upload and account issues daily. Frame it as 'hardware plus a software platform.'"],
+ ["Troubleshooting & organization (required)","15–20+ tickets/day, hardware + Wi-Fi + app troubleshooting, triage and notes"],
+ ["Documentation / KB / processes (required)","Troubleshooting docs + Zendesk macros; trained new hires with them"],
+ ["Written, verbal & listening skills (required)","Plain-language chat and email support, 88% CSAT"],
+ ["Competing priorities, remote (required)","Busy queues with urgent game-day issues"],
+ ["Zendesk workflows / automation / reporting (preferred)","Daily Zendesk user + macros. Study the Zendesk tab for triggers, automations, SLAs and Explore."],
+ ["Support KPIs, CSAT (preferred)","Tracked CSAT (88%). Know FRT, FCR, resolution time and backlog."],
+ ["Team lead / senior experience (preferred)","Trained new hires on workflows and standards"],
+ ["Onboarding, implementation, training (preferred)","Guided clubs, coaches and parents through setup and onboarding"],
+ ["Healthcare / scheduling software (preferred)","No direct experience. Show interest in their mission and learn how their product works before the interview."],
+];
+document.getElementById("tbMap").innerHTML="<tr><th>They want</th><th>Your proof</th></tr>"+M.map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join("");
+
+build();openTab(localStorage.getItem("ip_tab")||"cheat");
+</script>
+</body>
+</html>
