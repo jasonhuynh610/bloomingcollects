@@ -63,6 +63,27 @@
   <nav class="tabs"><div class="in" id="tabs"></div></nav>
 
   <main>
+    <!-- 0. TOP QUESTIONS -->
+    <section id="top">
+      <h2>⭐ Top interview questions + 6 core stories</h2>
+
+      <h3>Know the product: TRACE in 30 seconds (from traceup.com)</h3>
+      <div class="card"><ul>
+        <li><b>What it is:</b> an AI sports camera plus app (company: AlpineReplay, Inc., "powered by traceVision"). You set it up, hit record, and the AI films the game and automatically makes highlights.</li>
+        <li><b>PlayerFocus™:</b> turns team video into a <i>player-first</i> view, so every family gets highlights of <b>their</b> kid. Plans: Basic $180/yr, Pro $300/yr, with a free camera lease.</li>
+        <li><b>Features:</b> PlayerCam (zoomed view of one player), MultiCam, AI Reels, live game updates on your phone, team chat, game summaries and stats (possession, shots, game stats).</li>
+        <li><b>Customers:</b> parents, coaches and team managers. Their quote: "Coach used to spend Sunday nights cutting film. Now it's done before anyone leaves the field." Mostly youth soccer, now also basketball and football.</li>
+        <li><b>Why it matters for you:</b> you supported <b>hardware + app + subscription</b>, used by non-technical families on game days. That's real SaaS-style support.</li>
+      </ul><p class="muted">Use this when they ask "tell me about your last company" or "what did you support?"</p></div>
+
+      <h3>Your 6 core STAR stories (one story answers many questions)</h3>
+      <p class="note">Swap in the real details you remember: dates, names, what exactly broke. Specifics make you believable.</p>
+      <div id="core6"></div>
+
+      <h3>Common questions + how to answer</h3>
+      <div id="topQ"></div>
+    </section>
+
     <!-- 1. CHEAT SHEET -->
     <section id="cheat">
       <h2>🌸 TRACE cheat sheet: what to know cold</h2>
@@ -257,7 +278,7 @@
   <footer>🌱 Practice out loud. Your answers save only in this browser.</footer>
 
 <script>
-const TABS=[["cheat","Cheat sheet"],["practice","Practice"],["mock","Mock interview"],["stories","TRACE stories"],["zendesk","Zendesk"],["fund","CS fundamentals"],["tb","TeamBuilder"],["soci","SOCi (SDR)"]];
+const TABS=[["top","⭐ Top questions"],["cheat","Cheat sheet"],["practice","Practice"],["mock","Mock interview"],["stories","TRACE stories"],["zendesk","Zendesk"],["fund","CS fundamentals"],["tb","TeamBuilder"],["soci","SOCi (SDR)"]];
 const tabsEl=document.getElementById("tabs");
 function openTab(id){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===id));tabsEl.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.id===id));localStorage.setItem("ip_tab",id);scrollTo({top:0});}
 TABS.forEach(([id,l])=>{const b=document.createElement("button");b.textContent=l;b.dataset.id=id;b.onclick=()=>openTab(id);tabsEl.appendChild(b);});
@@ -435,6 +456,60 @@ const M=[
 ];
 document.getElementById("tbMap").innerHTML="<tr><th>They want</th><th>Your proof</th></tr>"+M.map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join("");
 
+/* ---------- TOP QUESTIONS ---------- */
+const C6=[
+ ["1 · The game-day rescue","Frustrated customer, pressure, communication",
+  "A coach messaged the night before a tournament. His game wasn't showing up in the app and parents were waiting on highlights.",
+  "Get it fixed before the tournament and keep him calm.",
+  "Acknowledged the stress first, then asked a few quick questions instead of sending a wall of steps. Found the camera was on weak Wi-Fi, so the upload kept stalling. Walked him through moving it closer to the router and checking upload status, one step at a time.",
+  "The video uploaded during the chat, he shared it with the team and left a positive rating. I turned the fix into a Zendesk macro."],
+ ["2 · The bug only engineering could fix","Escalation, cross-functional, follow-through",
+  "A customer's camera kept failing even after all our standard fixes.",
+  "Get it to the right team with everything they'd need, without leaving the customer hanging.",
+  "Reproduced it, pulled the camera's info and debug details through Slack, and sent engineering a clear write-up: steps, what we'd tried, customer impact. Told the customer what to expect and checked back regularly.",
+  "Engineering found and fixed the issue. I confirmed it with the customer before closing, and they didn't have to repeat themselves once."],
+ ["3 · The same question 20 times","Process improvement, documentation, initiative",
+  "The same Wi-Fi, upload and setup questions came in every day.",
+  "Cut down repeat work and make answers consistent.",
+  "Wrote troubleshooting docs and Zendesk macros for the most common issues, in plain language for parents and coaches.",
+  "Faster replies, consistent answers across the team, more time for hard tickets. The docs also became training material."],
+ ["4 · The really upset parent","De-escalation, empathy, staying calm",
+  "A parent was angry they couldn't see their kid's game footage.",
+  "Turn the conversation around and fix the problem.",
+  "Let them vent without interrupting, acknowledged that missing those moments is frustrating, apologized for the experience, then focused on what I could do right now and explained each step simply.",
+  "Got them access to the footage, and by the end the tone had completely changed. They thanked me."],
+ ["5 · The busy queue + training new hires","Organization, prioritization, leadership",
+  "Heavy days with 15–20+ tickets and several urgent game-day issues, while new teammates were ramping up.",
+  "Keep everyone unblocked and help new hires get up to speed.",
+  "Triaged urgent and blocking tickets first, sent quick updates on anything that needed time, worked the rest oldest first and left clear notes on every ticket. Trained new hires on the workflow, docs and macros.",
+  "Nothing slipped, urgent customers were unblocked before their games, and new hires ramped up faster and gave consistent answers."],
+ ["6 · Catching problems before customers did","QA mindset, going above and beyond, product knowledge",
+  "Cameras shipped in batches to clubs and families.",
+  "Make sure faulty units never reached customers.",
+  "Ran pre-shipment QA on batches of 20+ cameras using Python test scripts, tracked results in Google Sheets and diagnosed module, board and battery faults.",
+  "Bad units were caught before shipping, which meant fewer support tickets and happier customers, and I learned the product inside and out."],
+];
+document.getElementById("core6").innerHTML=C6.map(([t,u,s,tk,a,r])=>`<details><summary>${t} <span class="muted">· ${u}</span></summary><p><b>S</b>ituation: ${s}</p><p><b>T</b>ask: ${tk}</p><p><b>A</b>ction: ${a}</p><p><b>R</b>esult: ${r}</p></details>`).join("");
+const TQ=[
+ ["Tell me about yourself.","Present → past → future, 60–90 sec.","\"I've spent the last three years in customer support at TRACE, an AI sports camera company. Their camera films youth games and automatically makes highlights for each player. I was the go-to person for clubs, coaches and parents, handling 15–20 tickets a day in Zendesk across hardware, Wi-Fi and the app, and I kept an 88% CSAT. I also wrote help docs and macros, worked with engineering on bugs, trained new hires and did QA on cameras before they shipped. Now I'm looking to grow in customer support and success, and [Company] stood out because [reason].\""],
+ ["What did you do at TRACE / what did you support?","Use the product facts above.","\"TRACE makes an AI camera and app that films games and builds highlights for every player. Families pay for a yearly subscription, so I supported the hardware, the app and accounts. Most of my day was helping non-technical parents and coaches with setup, uploads, Wi-Fi and getting their highlights.\""],
+ ["Tell me about a difficult customer.","Story 4 (upset parent) or Story 1 (game day).","Lead with empathy, then the fix, then the result. Keep it under 90 seconds."],
+ ["Tell me about a time you went above and beyond.","Story 6 (QA) or Story 3 (docs).","Show you fixed things before customers even noticed."],
+ ["How do you handle many tickets at once?","Story 5.","Triage urgent first → quick updates → oldest first → macros → notes on every ticket → final check before logging off."],
+ ["Tell me about working with another team.","Story 2.","Emphasize the clear write-up, no authority over them, follow-up, and keeping the customer in the loop."],
+ ["Tell me about a process you improved.","Story 3.","Problem → what you built → result. Add any real numbers you remember."],
+ ["What's your biggest strength?","Pick one + proof.","\"Explaining technical things simply. At TRACE most customers weren't techy, so I learned to break problems into small, clear steps. That's a big part of how I kept an 88% CSAT.\""],
+ ["What's your biggest weakness?","Real, small, and what you're doing about it.","\"I've mostly done chat and email support, so I'm less experienced on the phone. I've been working on it by practicing calls and doing more video calls, and I'm comfortable talking to people. It just takes reps.\" (Or pick something true for you.)"],
+ ["How do you handle a question you don't know?","Honesty + follow-up.","\"I don't guess. I tell the customer I'll find the right answer and when they'll hear back, then check docs or ask the team. If it's a gap, I document it so the next person has it.\""],
+ ["How do you handle stress?","Calm + process.","\"Game days were our busiest times, so I got used to it. I focus on one thing at a time, start with the most urgent and keep people updated so nobody's left wondering.\""],
+ ["How do you use AI in your work?","Real example.","\"I use Claude and OpenClaw to automate repetitive work. For example, I built an agent that checks sites on a schedule, filters by my criteria and updates a Google Sheet. I've learned AI needs clear rules and a human double-checking it.\""],
+ ["Why did you leave TRACE?","Short, positive, forward.","\"My time there wrapped up in June. I learned a lot, and now I'm looking for a role where I can keep growing in [support/customer success].\" (Use your real reason, kept to one line.)"],
+ ["Where do you see yourself in 2–3 years?","Grow here.","\"Being someone the team relies on, owning harder issues, improving docs and helping newer teammates. Longer term I'm interested in customer success.\" (For Voltus, skip the 'next step' part and focus on growing in that role.)"],
+ ["Why should we hire you?","Three things.","\"I've done the core of this job for three years: high-volume support with an 88% CSAT. I don't just close tickets; I fix the process with docs and macros. And I'm technical enough to troubleshoot hardware and software and work well with engineering.\""],
+ ["Do you have questions for us?","Always yes.","\"What does success look like in the first 90 days?\" · \"What are customers' most common issues right now?\" · \"How does support work with product and engineering?\""],
+];
+document.getElementById("topQ").innerHTML=TQ.map(([q,h,a])=>`<details><summary>${q}</summary><p class="muted">💡 ${h}</p><div class="sample">${a}</div></details>`).join("");
+
 /* ---------- SOCi ---------- */
 const SM=[
  ["Self-starter, hits and exceeds goals (must)","88% CSAT at 15–20+ tickets/day; built macros and docs on your own initiative"],
@@ -481,7 +556,7 @@ function sociQuiz(){const el=document.getElementById("sociQuiz");if(sqi>=SQ.leng
 sociQuiz();
 document.getElementById("sociBasics").innerHTML=SB.map(([h,b])=>`<details><summary>${h}</summary><p>${b}</p></details>`).join("");
 
-build();openTab(localStorage.getItem("ip_tab")||"cheat");
+build();openTab(localStorage.getItem("ip_tab")||"top");
 </script>
 </body>
 </html>
