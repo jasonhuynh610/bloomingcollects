@@ -204,7 +204,7 @@
     <!-- 8. SOCi -->
     <section id="soci">
       <h2>📣 SOCi: Sales Development Representative</h2>
-      <div class="card"><b>Company:</b> SOCi, AI-powered marketing for multi-location brands (Ford, Ace Hardware, Kumon, Liberty Tax). Their "Genius AI" agents handle local marketing work across hundreds of locations: social posts, reviews, local listings, ads. <b>Pay:</b> $50–60K base + commission (you asked for $60K base, OTE flexible). Remote, Miami/Fort Lauderdale preferred. <b>Applied 10/26.</b></div>
+      <div class="card"><b>Company:</b> SOCi, AI-powered marketing for multi-location brands (Ford, Ace Hardware, Kumon, Liberty Tax). Their Genius Agents handle local marketing work across hundreds of locations: local search and listings, reviews and social. <b>Pay:</b> $50–60K base + commission (you asked for $60K base, OTE flexible). Remote, Miami/Fort Lauderdale preferred. <b>Applied 10/26.</b></div>
       <div class="note"><b>This is a sales role, not support.</b> An SDR finds and qualifies potential customers, books demos for Account Executives (AEs) and closes small deals. Expect phone-heavy outreach and quotas (meetings booked, pipeline). In the interview, show you're coachable, driven and good at explaining tech, and be honest that sales is a new direction.</div>
 
       <h3>What SOCi sells (in plain words)</h3>
@@ -230,6 +230,17 @@
         <p><b>If "send me an email":</b> "Happy to. So I send something useful, what's your biggest focus for local marketing this year?"</p>
         <p><b>If "we already use a tool":</b> "Makes sense, most brands we talk to do. What would you change about it if you could?"</p>
       </div>
+
+      <h3>SOCi's 3 Genius Agents (from soci.ai, Oct 2026)</h3>
+      <div class="grid">
+        <div class="card"><b>🔎 Local Search Agent</b><br>Local SEO + AI search visibility: manages listings, optimizes local pages, evaluates competitors, publishes Google posts, keeps data accurate.</div>
+        <div class="card"><b>⭐ Reputation Agent</b><br>Responds to reviews, asks for new reviews, analyzes sentiment, deploys surveys, responds to chats.</div>
+        <div class="card"><b>📱 Social Agent</b><br>Creates local social strategies, publishes content, replies to engagement, generates images and videos, answers DMs.</div>
+      </div>
+      <div class="card"><b>How they work:</b> educated on your brand → trained on your workflows → deployed to your locations.<br><b>Big numbers:</b> 400K+ agents deployed · 27M+ tasks · 5M+ hours saved · 4,000+ G2 reviews · #1 G2-ranked for multi-location marketing.<br><b>Customer proof:</b> Liberty Tax: 90% of locations in the Google local "3-pack" (up from 60%). Ascent HM: 99% of reviews answered (up from 18%). Rita's: review replies went from 10 hours a week to 5 minutes a day.</div>
+
+      <h3>🧠 SOCi quiz</h3>
+      <div class="card" id="sociQuiz"></div>
 
       <h3>Good questions to ask SOCi</h3>
       <div class="card"><ul>
@@ -445,6 +456,29 @@ const SB=[
  ["Key terms","<b>Pipeline:</b> all the potential deals in progress. <b>Quota:</b> your target (for example, meetings booked per month). <b>OTE:</b> on-target earnings, base plus commission if you hit quota. <b>Lead / MQL / SQL:</b> a contact → marketing-qualified → sales-qualified. <b>Conversion rate:</b> % of contacts that become meetings."],
  ["Your support → sales bridge","Everything you did in support carries over: <b>listening to find the real problem</b> (discovery), <b>calming frustrated people</b> (objection handling), <b>explaining tech simply</b> (pitching), <b>follow-through and notes</b> (pipeline management)."],
 ];
+const SQ=[
+ ["What does SOCi mainly do?",["Builds chatbots for websites","AI-powered marketing for multi-location businesses","Payroll software for franchises","A general AI writing assistant like ChatGPT"],1,"SOCi helps brands with many locations (franchises, chains) manage local marketing with AI agents."],
+ ["What does SOCi call its AI agents?",["Genius Agents","SOCi Bots","Local Pilots","Brand Copilots"],0,"Genius Agents™, an 'agentic workforce' for local marketing."],
+ ["Which is NOT one of SOCi's three main agents?",["Local Search Agent","Reputation Agent","Social Agent","Payroll Agent"],3,"The three are Local Search, Reputation and Social."],
+ ["Which agent responds to reviews and analyzes sentiment?",["Social Agent","Reputation Agent","Local Search Agent","Billing Agent"],1,"The Reputation Agent handles reviews, sentiment, surveys and chats."],
+ ["Which agent manages listings and publishes Google posts?",["Local Search Agent","Social Agent","Reputation Agent","Ads Agent"],0,"The Local Search Agent covers local SEO, listings, local pages and Google posts."],
+ ["Which agent can generate images and videos and answer DMs?",["Reputation Agent","Local Search Agent","Social Agent","Survey Agent"],2,"The Social Agent creates strategy, publishes posts, replies to engagement and makes images and videos."],
+ ["How does SOCi describe how Genius Agents work?",["Downloaded, installed, rebooted","Educated on your brand, trained on your workflows, deployed to your locations","Coded by your IT team","Copied from ChatGPT"],1,"Brand → workflows → locations. That's how they stay on-brand at scale."],
+ ["Who is SOCi's ideal customer?",["A single coffee shop","A brand with hundreds of locations, like Ace Hardware or Kumon","Individual influencers","Software developers"],1,"Multi-location brands: the more locations, the more work agents save."],
+ ["Liberty Tax said Genius Agents got what % of its locations into Google's local '3-pack'?",["60%","75%","90%","100%"],2,"90%, up from 60% before agents. Great stat for a pitch."],
+ ["Ascent HM's review response rate went from 18% to…?",["50%","75%","88%","99%"],3,"99% of reviews answered. It shows agents get 'all the work done.'"],
+ ["Rita's cut review replies from 10 hours a week to about…?",["5 minutes a day","1 hour a day","2 hours a week","No change"],0,"5 minutes a day. That's the 'save hundreds of hours' message."],
+ ["Roughly how many Genius Agents has SOCi deployed?",["4,000+","40K+","400K+","4M+"],2,"400K+ agents, 27M+ tasks and 5M+ hours saved."],
+ ["What's the main difference between SOCi and ChatGPT?",["SOCi is cheaper","ChatGPT writes text; SOCi's agents are connected to Google, Yelp and social and do the work across every location","There's no difference","SOCi only does email"],1,"ChatGPT is a writing tool; SOCi is a 'digital workforce' plugged into the platforms."],
+ ["As an SDR at SOCi, your main job is to…",["Fix customers' bugs","Find and qualify prospects and book meetings or demos for Account Executives","Write the AI code","Manage payroll"],1,"SDRs build pipeline: prospect, qualify, book meetings and close small deals."],
+ ["A prospect says 'we already use a tool.' Best response?",["'Ours is better, trust me.'","Hang up","'Makes sense, most brands do. What would you change about it if you could?'","Offer a 50% discount"],2,"Acknowledge, then ask. Get them talking about their pain."],
+ ["In BANT, what does the 'A' stand for?",["Availability","Authority (are they a decision-maker?)","Analytics","Agents"],1,"Budget, Authority, Need, Timing."],
+];
+let sqi=0,ssc=0;
+function sociQuiz(){const el=document.getElementById("sociQuiz");if(sqi>=SQ.length){el.innerHTML=`<p><b>Score: ${ssc}/${SQ.length}</b> ${ssc>=14?"🌸 You know SOCi!":"Review the agent cards above and retake."}</p><button class="btn" id="sqr">Retake</button>`;document.getElementById("sqr").onclick=()=>{sqi=0;ssc=0;sociQuiz();};return;}
+ const [q,o,a,why]=SQ[sqi];el.innerHTML=`<p class="muted">Question ${sqi+1} of ${SQ.length} · score ${ssc}</p><p class="q">${q}</p>`+o.map((x,i)=>`<button class="quiz-opt" data-i="${i}">${x}</button>`).join("")+`<p class="muted" id="sqwhy" style="display:none"></p><button class="btn ghost" id="sqn" style="display:none">Next →</button>`;
+ el.querySelectorAll(".quiz-opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;el.querySelectorAll(".quiz-opt").forEach(z=>{z.disabled=true;if(+z.dataset.i===a)z.classList.add("right");});if(i===a)ssc++;else b.classList.add("wrong");const w=document.getElementById("sqwhy");w.textContent=(i===a?"✅ ":"❌ ")+why;w.style.display="block";const n=document.getElementById("sqn");n.style.display="inline-block";n.onclick=()=>{sqi++;sociQuiz();};});}
+sociQuiz();
 document.getElementById("sociBasics").innerHTML=SB.map(([h,b])=>`<details><summary>${h}</summary><p>${b}</p></details>`).join("");
 
 build();openTab(localStorage.getItem("ip_tab")||"cheat");
