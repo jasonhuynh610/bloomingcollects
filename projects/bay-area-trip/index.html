@@ -21,7 +21,11 @@
     .hbtn { margin-left:auto; display:flex; gap:.4rem; }
     .hbtn button, .chipbtn { border:1px solid var(--line); background:#fff; border-radius:999px; padding:.3rem .75rem; font:inherit; font-size:.82rem; cursor:pointer; color:var(--ink); }
     .hbtn button.on { background:var(--ink); color:#fff; }
-    .app { flex:1; display:grid; grid-template-columns:440px 1fr; min-height:0; }
+    .app { flex:1; display:grid; grid-template-columns:minmax(420px,62%) 1fr; min-height:0; }
+    body.nomap .app { grid-template-columns:1fr; } body.nomap #mapwrap { display:none; }
+    .list.cards { display:grid !important; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:.7rem; align-content:start; }
+    .list.cards > .dayhead, .list.cards > .note, .list.cards > .opt, .list.cards > .addform { grid-column:1/-1; }
+    .list.cards .card { margin:0 !important; }
     aside { display:flex; flex-direction:column; min-height:0; border-right:1px solid var(--line); background:#fff; }
     .tabs { display:flex; gap:.35rem; padding:.6rem .8rem; overflow-x:auto; border-bottom:1px solid var(--line); }
     .tabs button { border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px; padding:.32rem .75rem; cursor:pointer; white-space:nowrap; font:inherit; font-size:.83rem; }
@@ -74,7 +78,7 @@
     .pin.fav { outline:3px solid #ffd166; }
     .toast { position:fixed; bottom:18px; left:50%; transform:translateX(-50%); background:var(--ink); color:#fff; padding:.5rem 1rem; border-radius:999px; font-size:.85rem; opacity:0; transition:opacity .3s; pointer-events:none; z-index:9999; }
     .toast.show { opacity:1; }
-    @media (max-width:860px){ .app { grid-template-columns:1fr; grid-template-rows:40vh 1fr; } #mapwrap { order:-1; } aside { border-right:0; border-top:1px solid var(--line); } .hbtn { margin-left:0; } }
+    @media (max-width:860px){ .app { grid-template-columns:1fr; grid-template-rows:28vh 1fr; } body.nomap .app { grid-template-rows:1fr; } #mapwrap { order:-1; } aside { border-right:0; border-top:1px solid var(--line); } .hbtn { margin-left:0; } }
   </style>
 </head>
 <body>
@@ -86,6 +90,7 @@
     <button id="vList" class="on">📋 List</button>
     <button id="vCards">🖼️ Photos</button>
     <button id="vTl">🕒 Timeline</button>
+    <button id="mapt">🗺️ Hide map</button>
     <button id="share">🔗 Share</button>
   </div>
 </header>
@@ -298,6 +303,9 @@ document.getElementById("favf").onclick=e=>{favOnly=!favOnly;e.target.classList.
 document.getElementById("addb").onclick=()=>{const open=!S.get("formOpen",false);S.set("formOpen",open);render(false);if(open)setTimeout(()=>{const f=document.getElementById("addform");f.scrollIntoView({behavior:"smooth"});document.getElementById("fn").focus();},60);};
 document.getElementById("vList").onclick=()=>{view="list";S.set("view",view);render(false);};
 document.getElementById("vTl").onclick=()=>{view="tl";S.set("view",view);render(false);};
+function applyMap(){const off=S.get("nomap",false);document.body.classList.toggle("nomap",off);document.getElementById("mapt").textContent=off?"🗺️ Show map":"🗺️ Hide map";setTimeout(()=>map.invalidateSize(),60);}
+document.getElementById("mapt").onclick=()=>{S.set("nomap",!S.get("nomap",false));applyMap();};
+applyMap();
 document.getElementById("vCards").onclick=()=>{view="cards";S.set("view",view);render(false);};
 document.getElementById("share").onclick=async()=>{const url=location.href.split("?")[0];
   try{if(navigator.share){await navigator.share({title:"Bay Area trip",url});}else{await navigator.clipboard.writeText(url);toast("🔗 Link copied");}}catch(e){}};
