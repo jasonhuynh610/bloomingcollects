@@ -251,7 +251,9 @@ async function addPlace(){
   const n=document.getElementById("fn").value.trim(), d=document.getElementById("fd").value.trim(), day=document.getElementById("fday").value, msg=document.getElementById("fmsg");
   if(!n){msg.textContent="Type a place name first.";return;}
   msg.textContent="Looking it up…"; let ll=null;
-  try{const r=await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&viewbox=-122.6,37.95,-121.6,36.9&bounded=1&q="+encodeURIComponent(n)).then(r=>r.json()); if(r[0]) ll=[+r[0].lat,+r[0].lon];}catch(e){}
+  try{const r=await fetch("https://photon.komoot.io/api/?limit=1&lat=37.55&lon=-122.15&bbox=-122.65,36.9,-121.55,38.0&q="+encodeURIComponent(n)).then(r=>r.json());
+    const f=r.features&&r.features[0]; if(f) ll=[f.geometry.coordinates[1],f.geometry.coordinates[0]];}catch(e){}
+  if(!ll){try{const r=await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&viewbox=-122.65,38.0,-121.55,36.9&bounded=1&q="+encodeURIComponent(n)).then(r=>r.json()); if(r[0]) ll=[+r[0].lat,+r[0].lon];}catch(e){}}
   custom.push({id:"c"+Date.now(),n,d:d||(ll?"":"Couldn't find it on the map, so it's listed without a pin"),ll,t:["custom"],day,custom:1}); S.set("custom",custom);
   toast(ll?"📍 Added with a pin":"Added (no pin found)"); cur=day; S.set("tab",cur); render();
 }
