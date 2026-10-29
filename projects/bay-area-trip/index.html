@@ -57,6 +57,17 @@
     .addform input, .addform select { font:inherit; font-size:.85rem; padding:.4rem .55rem; border:1px solid var(--line); border-radius:8px; width:100%; margin:.2rem 0; }
     .addform .row { display:flex; gap:.4rem; } .addform button { border:0; background:var(--deep); color:#fff; border-radius:999px; padding:.4rem .9rem; font:inherit; cursor:pointer; }
     .msg { font-size:.78rem; color:var(--muted); }
+    .thumb { flex:none; width:58px; height:58px; border-radius:10px; object-fit:cover; background:#f3eef8; }
+    .ph { display:grid; place-items:center; font-size:1.6rem; background:linear-gradient(135deg,#fbe3ee,#e6f0ff); }
+    .list.cards { display:block; }
+    .list.cards .card { position:relative; display:block; border:1px solid var(--line); border-radius:16px; overflow:hidden; margin:.6rem 0; background:#fff; cursor:pointer; box-shadow:0 2px 10px rgba(120,80,110,.07); transition:transform .15s; }
+    .list.cards .card:hover { transform:translateY(-2px); } .list.cards .card.sel { outline:2px solid var(--deep); }
+    .cimg { width:100%; height:170px; object-fit:cover; display:block; }
+    .cimg.ph { height:120px; font-size:3rem; }
+    .cnum { position:absolute; top:10px; left:10px; width:28px; height:28px; border-radius:50%; color:#fff; font-weight:700; display:grid; place-items:center; font-size:.8rem; border:2px solid #fff; }
+    .cbody { padding:.6rem .8rem .7rem; } .acts.row { flex-direction:row; align-items:center; gap:.7rem; margin-top:.4rem; justify-content:flex-start; }
+    .acts.row label { font-size:.78rem; color:var(--muted); display:flex; gap:.25rem; align-items:center; }
+    .card.done .pname { text-decoration:line-through; color:var(--muted); }
     #map { height:100%; min-height:300px; }
     .pin { width:28px; height:28px; border-radius:50% 50% 50% 0; transform:rotate(-45deg); display:grid; place-items:center; border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.25); }
     .pin b { transform:rotate(45deg); color:#fff; font-size:.74rem; font-family:system-ui; }
@@ -73,6 +84,7 @@
   <span class="count" id="count"></span>
   <div class="hbtn">
     <button id="vList" class="on">📋 List</button>
+    <button id="vCards">🖼️ Photos</button>
     <button id="vTl">🕒 Timeline</button>
     <button id="share">🔗 Share</button>
   </div>
@@ -156,9 +168,27 @@ const DAYS=[
    {n:"San Pedro Square Market",d:"Downtown SJ food hall",ll:[37.3364,-121.8941],t:["food"]}]},
 ];
 const DAYIDS=["sat","sun","mon","tue"];
+/* Wikipedia article for photos (fallback = emoji card) */
+const WIKI={"San Jose Mineta Airport (SJC)":"San_Jose_Mineta_International_Airport","Winchester Mystery House":"Winchester_Mystery_House","Santana Row":"Santana_Row","Hakone Gardens":"Hakone_Gardens",
+ "Alamo Square · Painted Ladies":"Painted_ladies","Blue Heron paddle boats · Stow Lake":"Stow_Lake","Japanese Tea Garden":"Japanese_Tea_Garden_(San_Francisco)","Palace Games escape room":"Palace_of_Fine_Arts",
+ "Crissy Field":"Crissy_Field","Ghirardelli Square":"Ghirardelli_Square","Musée Mécanique":"Musée_Mécanique","Boudin Bakery":"Boudin_Bakery","PIER 39":"Pier_39","Golden Gate Fortune Cookie Factory":"Golden_Gate_Fortune_Cookie_Factory",
+ "Golden Gate Bakery":"Chinatown,_San_Francisco","Japan Center Malls":"Japan_Center_(San_Francisco)","Día de los Muertos · Mission":"Mission_District,_San_Francisco","Rosicrucian Egyptian Museum + Rose Garden":"Rosicrucian_Egyptian_Museum",
+ "Bike the Golden Gate Bridge":"Golden_Gate_Bridge","Alcatraz":"Alcatraz_Island","Cable car (Powell-Hyde)":"San_Francisco_cable_car_system","Lands End + Sutro Baths":"Sutro_Baths","Hayes Valley":"Hayes_Valley,_San_Francisco",
+ "Haight-Ashbury":"Haight-Ashbury","La Taqueria":"La_Taqueria","House of Prime Rib":"House_of_Prime_Rib","Downtown Los Gatos":"Los_Gatos,_California","Apple Park Visitor Center":"Apple_Park","Castro St, Mountain View":"Mountain_View,_California",
+ "Vietnamese breakfast · Story Rd":"Little_Saigon,_San_Jose","The Mystery Spot":"Mystery_Spot","Sharks Ice San Jose":"Sharks_Ice_at_San_Jose","San Pedro Square Market":"Downtown_San_Jose","Good Mong Kok Bakery":"Chinatown,_San_Francisco",
+ "Karaoke on El Camino Real":"El_Camino_Real_(California)","Spina Farms Pumpkin Patch":"Pumpkin_patch","Stan's Donut Shop":"Doughnut","Dumpling Home":"Xiaolongbao","Daeho Kalbijjim":"Galbi-jjim","Marufuku Ramen":"Tonkotsu_ramen","Dim sum brunch":"Dim_sum"};
+const EMO={coffee:"☕",breakfast:"🥟",brunch:"🥢",dinner:"🍽️",food:"🍜",sweets:"🍩",walk:"🚶",photo:"📸",activity:"🎯",garden:"🌸",attraction:"⭐",shopping:"🛍️",museum:"🏛️",travel:"✈️",halloween:"🎃",spooky:"👻",night:"🎤",event:"💀",tech:"🍎",quirky:"🌀",custom:"📍",korean:"🍖"};
+const emoji=p=>EMO[(p.t||[]).find(t=>EMO[t])]||"📍";
+let IMG=JSON.parse(localStorage.getItem("t3img")||"{}");
+async function loadImgs(){
+  const names=Object.keys(WIKI).filter(n=>IMG[n]===undefined);
+  await Promise.all(names.map(async n=>{try{const r=await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(WIKI[n]));const j=await r.json();IMG[n]=(j.thumbnail&&j.thumbnail.source)||(j.originalimage&&j.originalimage.source)||"";}catch(e){IMG[n]="";}}));
+  localStorage.setItem("t3img",JSON.stringify(IMG)); render(false);
+}
+const thumb=(p,cls)=>IMG[p.n]?`<img class="${cls}" src="${IMG[p.n]}" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;${cls} ph&quot;>${emoji(p)}</div>'">`:`<div class="${cls} ph">${emoji(p)}</div>`;
 const ALL={id:"all",label:"All days",color:"#2d2a3e"};
 const S={get:(k,d)=>{try{return JSON.parse(localStorage.getItem("t3_"+k))??d}catch{return d}},set:(k,v)=>localStorage.setItem("t3_"+k,JSON.stringify(v))};
-let cur=S.get("tab","all"), view=S.get("view","list"), query="", favOnly=false;
+let cur=S.get("tab","all"), view=S.get("view","cards"), query="", favOnly=false;
 let done=S.get("done",{}), favs=S.get("favs",{}), moved=S.get("moved",{}), custom=S.get("custom",[]);
 const pid=p=>p.id||p.n;
 function placesFor(dayId){
@@ -195,8 +225,8 @@ function tabs(){const el=document.getElementById("tabs");el.innerHTML="";
     b.onclick=()=>{cur=d.id;S.set("tab",cur);render();};el.appendChild(b);});}
 function render(fit=true){
   tabs(); layer.clearLayers();
-  document.getElementById("vList").classList.toggle("on",view==="list"); document.getElementById("vTl").classList.toggle("on",view==="tl");
-  const list=document.getElementById("list"); list.className="list"+(view==="tl"?" tl":""); list.innerHTML="";
+  document.getElementById("vList").classList.toggle("on",view==="list"); document.getElementById("vTl").classList.toggle("on",view==="tl"); document.getElementById("vCards").classList.toggle("on",view==="cards");
+  const list=document.getElementById("list"); list.className="list"+(view==="tl"?" tl":"")+(view==="cards"?" cards":""); list.innerHTML="";
   const days=cur==="all"?DAYS.filter(d=>d.id!=="ideas"):DAYS.filter(d=>d.id===cur);
   const bounds=[]; let tot=0,dn=0,nextName="";
   days.forEach(d=>{
@@ -214,7 +244,13 @@ function render(fit=true){
       if(!isDone&&!firstOpenMarked&&d.id!=="ideas"){firstOpenMarked=true; if(!nextName) nextName=p.n; row.classList.add("next");}
       const moveSel=d.id==="ideas"?`<select title="Move to a day"><option value="">＋ to day…</option>${DAYIDS.map(x=>`<option value="${x}">${DAYS.find(z=>z.id===x).label}</option>`).join("")}</select>`
         :(p.movedIn?`<button data-a="unmove">↩ to ideas</button>`:(p.custom?`<button data-a="del">✕ remove</button>`:""));
-      row.innerHTML=`<div class="num ${p.ll?"":"nomap"}" style="background:${d.color}">${label}</div>
+      if(view==="cards"){
+        row.className="card"+(isDone?" done":"");
+        row.innerHTML=`${thumb(p,"cimg")}<span class="cnum" style="background:${d.color}">${label}</span>
+          <div class="cbody"><div class="pname">${p.tm?`<span class="time">${p.tm}</span>`:""}${p.n}</div><div class="pdesc">${p.warn?"⚠️ ":""}${p.d||""}</div>
+          <div class="acts row"><label><input type="checkbox" ${isDone?"checked":""}> done</label><button class="heart" data-a="fav">${favs[id]?"❤️":"🤍"}</button><a href="${p.link||gmaps(p.n)}" target="_blank" rel="noopener">${p.link?"site ↗":"maps ↗"}</a>${moveSel}</div></div>`;
+      } else
+      row.innerHTML=`<div class="num ${p.ll?"":"nomap"}" style="background:${d.color}">${label}</div>${thumb(p,"thumb")}
         <div class="pbody"><div class="pname">${view==="tl"&&p.tm?`<span class="time">${p.tm}</span>`:""}${p.n}</div><div class="pdesc">${p.warn?"⚠️ ":""}${p.d||""}</div>
         <div class="tags">${(p.t||[]).map(t=>`<span class="tag">${t}</span>`).join("")}${p.movedIn?'<span class="tag">moved in</span>':""}${p.custom?'<span class="tag">added by you</span>':""}</div></div>
         <div class="acts"><input type="checkbox" ${isDone?"checked":""} title="Done"><button class="heart" data-a="fav">${favs[id]?"❤️":"🤍"}</button>
@@ -226,7 +262,7 @@ function render(fit=true){
       const um=row.querySelector('[data-a="unmove"]'); if(um) um.onclick=e=>{e.stopPropagation();delete moved[id];S.set("moved",moved);render(false);};
       const de=row.querySelector('[data-a="del"]'); if(de) de.onclick=e=>{e.stopPropagation();custom=custom.filter(c=>c.id!==p.id);S.set("custom",custom);render(false);};
       if(p.ll){
-        const m=L.marker(p.ll,{icon:pin(d.color,label,favs[id])}).bindPopup(`<b>${p.n}</b><br>${p.d||""}<br><a href="${gmaps(p.n)}" target="_blank">Google Maps ↗</a>`).addTo(layer);
+        const m=L.marker(p.ll,{icon:pin(d.color,label,favs[id])}).bindPopup(`${IMG[p.n]?`<img src="${IMG[p.n]}" style="width:220px;height:130px;object-fit:cover;border-radius:10px;display:block;margin-bottom:6px">`:""}<b>${p.n}</b><br>${p.d||""}<br><a href="${gmaps(p.n)}" target="_blank">Google Maps ↗</a>`,{maxWidth:240}).addTo(layer);
         bounds.push(p.ll); route.push(p.ll); prevLL=p.ll;
         m.on("click",()=>{document.querySelectorAll(".place").forEach(x=>x.classList.remove("sel"));row.classList.add("sel");row.scrollIntoView({block:"nearest",behavior:"smooth"});});
         row.onclick=()=>{document.querySelectorAll(".place").forEach(x=>x.classList.remove("sel"));row.classList.add("sel");map.flyTo(p.ll,15,{duration:.8});m.openPopup();};
@@ -262,11 +298,12 @@ document.getElementById("favf").onclick=e=>{favOnly=!favOnly;e.target.classList.
 document.getElementById("addb").onclick=()=>{const open=!S.get("formOpen",false);S.set("formOpen",open);render(false);if(open)setTimeout(()=>{const f=document.getElementById("addform");f.scrollIntoView({behavior:"smooth"});document.getElementById("fn").focus();},60);};
 document.getElementById("vList").onclick=()=>{view="list";S.set("view",view);render(false);};
 document.getElementById("vTl").onclick=()=>{view="tl";S.set("view",view);render(false);};
+document.getElementById("vCards").onclick=()=>{view="cards";S.set("view",view);render(false);};
 document.getElementById("share").onclick=async()=>{const url=location.href.split("?")[0];
   try{if(navigator.share){await navigator.share({title:"Bay Area trip",url});}else{await navigator.clipboard.writeText(url);toast("🔗 Link copied");}}catch(e){}};
 /* during the trip, open today's tab automatically */
 (function(){const today=new Date().toLocaleDateString("en-CA",{timeZone:"America/Los_Angeles"});const d=DAYS.find(x=>x.date===today);if(d){cur=d.id;}})();
-render(); loadWx();
+render(); loadWx(); loadImgs();
 </script>
 </body>
 </html>
