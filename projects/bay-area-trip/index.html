@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Bay Area Trip · Oct 31 – Nov 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#2d2a3e; --muted:#6f6a85; --line:rgba(45,42,62,.12); --deep:#e2729c; --mint:#74cfac; --blue:#7aaee8; --lilac:#ad98ea; --sun:#f2b66d; --r:16px; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); font-family:"Zen Maru Gothic",system-ui,sans-serif; line-height:1.55; background:linear-gradient(180deg,#cfe7ff 0,#fbe3ee 280px,#fbf9fc 520px); }
+    .wrap { max-width:860px; margin:0 auto; padding:1.6rem 1.1rem 3rem; }
+    a.back { color:var(--muted); text-decoration:none; font-size:.9rem; }
+    h1 { font-size:2rem; margin:.4rem 0 .2rem; } h1 span { color:var(--deep); }
+    .sub { color:var(--muted); margin:0 0 1rem; }
+    .chips { display:flex; flex-wrap:wrap; gap:.4rem; margin:.6rem 0 1.2rem; }
+    .chip { background:#fff; border:1px solid var(--line); border-radius:999px; padding:.3rem .8rem; font-size:.85rem; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:1rem 1.15rem; margin:.9rem 0; box-shadow:0 2px 12px rgba(120,80,110,.06); }
+    .day { border-left:6px solid var(--blue); }
+    .day.d0 { border-left-color:var(--sun); } .day.d1 { border-left-color:var(--mint); } .day.d2 { border-left-color:var(--deep); } .day.d3 { border-left-color:var(--lilac); }
+    .day h2 { margin:0; font-size:1.25rem; } .day .when { color:var(--muted); font-size:.9rem; margin-bottom:.5rem; }
+    h3 { font-size:.95rem; margin:.9rem 0 .3rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+    ul { margin:.2rem 0; padding-left:0; list-style:none; }
+    li { padding:.45rem .2rem; border-bottom:1px dashed var(--line); display:flex; gap:.6rem; align-items:flex-start; }
+    li:last-child { border-bottom:0; }
+    li input { margin-top:.35rem; width:18px; height:18px; accent-color:var(--deep); flex:none; }
+    li.done .t { text-decoration:line-through; color:var(--muted); }
+    .t b { font-weight:700; } .t small { display:block; color:var(--muted); }
+    .map { font-size:.8rem; color:#3a6fae; text-decoration:none; white-space:nowrap; margin-left:auto; }
+    .opt { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+    .opt div { background:#f6f3fb; border-radius:12px; padding:.6rem .8rem; font-size:.92rem; }
+    .note { background:#fff7ea; border:1px solid #f6dcae; border-radius:12px; padding:.6rem .85rem; font-size:.9rem; margin-top:.6rem; }
+    .tbd { color:var(--deep); font-style:italic; }
+    @media (max-width:560px){ .opt { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← back to the garden</a>
+  <h1>Bay Area Trip <span>🌉</span></h1>
+  <p class="sub">San Jose + San Francisco · Sat Oct 31 – Tue Nov 3, 2026 · staying at Nam's (San Jose)</p>
+  <div class="chips">
+    <span class="chip">✈️ LGB → SJC · ~1h15m</span>
+    <span class="chip">🚗 Or drive ~6 hrs</span>
+    <span class="chip">🏠 Base: Nam's place, downtown San Jose</span>
+  </div>
+  <p class="sub" style="font-size:.85rem">Tap the boxes to check things off. They save on your phone.</p>
+
+  <div class="card day d0">
+    <h2>Sat, Oct 31 <span class="tbd">(maybe)</span></h2>
+    <div class="when">Optional early start</div>
+    <ul data-day="0">
+      <li><input type="checkbox"><span class="t"><b>🚗 Drive up</b><small>If leaving a day early</small></span></li>
+      <li><input type="checkbox"><span class="t"><b>🥡 Chinese food</b><small>On the drive / when you arrive</small></span></li>
+    </ul>
+  </div>
+
+  <div class="card day d1">
+    <h2>Sun, Nov 1 · Explore San Jose</h2>
+    <h3>Getting there</h3>
+    <div class="opt">
+      <div><b>Option 1: Fly</b><br>LGB → SJC, arrive ~11 AM–12 PM</div>
+      <div><b>Option 2: Drive</b><br>Leave ~5 AM, arrive ~11 AM–12 PM</div>
+    </div>
+    <h3>Activities</h3>
+    <ul data-day="1">
+      <li><input type="checkbox"><span class="t"><b>🌸 Hakone Gardens</b><small>Japanese garden</small></span><a class="map" target="_blank" href="https://maps.google.com/?q=Hakone+Gardens">map ↗</a></li>
+      <li><input type="checkbox"><span class="t"><b>🎃🦖 Spina Farms Pumpkin Patch</b><small>Pumpkin patch with dinosaurs</small></span><a class="map" target="_blank" href="https://maps.google.com/?q=Spina+Farms+Pumpkin+Patch">map ↗</a></li>
+    </ul>
+    <h3>Dinner</h3>
+    <ul data-day="1d">
+      <li><input type="checkbox"><span class="t"><b>🍖 Daeho Kalbijjim</b><small>Galbijjim (braised short ribs)</small></span><a class="map" target="_blank" href="https://maps.google.com/?q=Daeho+Kalbijjim">map ↗</a></li>
+    </ul>
+    <div class="note">⚠️ Double-check: Hakone Gardens is in <b>Saratoga</b> (~25 min from San Jose). Pumpkin patches often close after <b>Oct 31</b>, so confirm Spina Farms is open Nov 1.</div>
+  </div>
+
+  <div class="card day d2">
+    <h2>Mon, Nov 2 · San Francisco</h2>
+    <h3>Coffee & sweets</h3>
+    <ul data-day="2a">
+      <li><input type="checkbox"><span class="t"><b>☕ Kasamba Coffee</b></span><a class="map" target="_blank" href="https://maps.google.com/?q=Kasamba+Coffee">map ↗</a></li>
+      <li><input type="checkbox"><span class="t"><b>🍩 Stan's Donuts</b><small>The glazed donuts from TikTok</small></span><a class="map" target="_blank" href="https://maps.google.com/?q=Stan%27s+Donuts">map ↗</a></li>
+    </ul>
+    <h3>Breakfast</h3>
+    <ul data-day="2b">
+      <li><input type="checkbox"><span class="t"><b>🥟 Dumpling Home</b><small>Soup dumplings · Michelin-recognized</small></span><a class="map" target="_blank" href="https://maps.google.com/?q=Dumpling+Home+San+Francisco">map ↗</a></li>
+    </ul>
+    <h3>Chinatown</h3>
+    <ul data-day="2c">
+      <li><input type="checkbox"><span class="t"><b>🥧 Golden Gate Bakery</b><small>Egg tarts</small></span><a class="map" target="_blank" href="https://maps.google.com/?q=Golden+Gate+Bakery+San+Francisco">map ↗</a></li>
+      <li><input type="checkbox"><span class="t"><b>🥠 Fortune cookie factory</b></span><a class="map" target="_blank" href="https://maps.google.com/?q=Golden+Gate+Fortune+Cookie+Factory">map ↗</a></li>
+    </ul>
+    <h3>Activities</h3>
+    <ul data-day="2d">
+      <li><input type="checkbox"><span class="t"><b>🚣 Blue Heron paddle boating</b><small>Really fun</small></span><a class="map" target="_blank" href="https://maps.google.com/?q=Blue+Heron+Boat+Rental+Stow+Lake">map ↗</a></li>
+      <li><input type="checkbox"><span class="t"><b>🦭 Pier 39</b></span><a class="map" target="_blank" href="https://maps.google.com/?q=Pier+39+San+Francisco">map ↗</a></li>
+      <li><input type="checkbox"><span class="t"><b>🛍️ Japan Center malls</b><small>Japantown</small></span><a class="map" target="_blank" href="https://maps.google.com/?q=Japan+Center+San+Francisco">map ↗</a></li>
+      <li><input type="checkbox"><span class="t"><b>🔐 Palace Games escape room</b><small>At the Palace of Fine Arts · <a href="https://palace-games.com/" target="_blank">palace-games.com</a> (book ahead)</small></span><a class="map" target="_blank" href="https://maps.google.com/?q=Palace+of+Fine+Arts">map ↗</a></li>
+    </ul>
+    <h3>Dinner</h3>
+    <ul data-day="2e"><li><span class="t tbd">TBD: pick a spot</span></li></ul>
+    <h3>Excursions</h3>
+    <ul data-day="2f"><li><span class="t tbd">Places to walk around / hang out: add ideas</span></li></ul>
+    <div class="note">⚠️ Double-check: Stan's Donuts may be in <b>Santa Clara</b>, not SF. If so, grab it Sunday or on the way up. Golden Gate Bakery has irregular hours, so check before going.</div>
+  </div>
+
+  <div class="card day d3">
+    <h2>Tue, Nov 3 · Head home</h2>
+    <ul data-day="3">
+      <li><input type="checkbox"><span class="t"><b>☕ Coffee at the new place next to Nam's</b></span></li>
+      <li><input type="checkbox"><span class="t"><b>🥢 Dim sum brunch</b><small>Kelly has a spot</small></span></li>
+    </ul>
+    <h3>Getting home</h3>
+    <div class="opt">
+      <div><b>Option 1: Fly</b><br>SJC → LGB, any time</div>
+      <div><b>Option 2: Drive</b><br>Leave ~12 PM, home ~9 PM</div>
+    </div>
+  </div>
+</div>
+<script>
+document.querySelectorAll("ul[data-day]").forEach(ul=>{
+  ul.querySelectorAll("li").forEach((li,i)=>{
+    const cb=li.querySelector("input"); if(!cb) return;
+    const key="trip_"+ul.dataset.day+"_"+i;
+    cb.checked=localStorage.getItem(key)==="1"; li.classList.toggle("done",cb.checked);
+    cb.onchange=()=>{localStorage.setItem(key,cb.checked?"1":"0");li.classList.toggle("done",cb.checked);};
+  });
+});
+</script>
+</body>
+</html>
