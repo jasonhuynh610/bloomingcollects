@@ -63,6 +63,50 @@
   <nav class="tabs"><div class="in" id="tabs"></div></nav>
 
   <main>
+    <!-- ARENA CLUB -->
+    <section id="arena">
+      <h2>🃏 Arena Club: VIP Customer Success Specialist</h2>
+      <div class="card"><b>Interview: Monday 11/9</b> · LA office (ask if hybrid/remote) · $65–110K + bonus + equity<br>
+      <b>Company:</b> a digital marketplace for collectibles, co-founded by Derek Jeter and Brian Lee. Buy, sell, grade, vault, digital pack openings and a personal online showroom. Started as the "first-ever digital card show."<br>
+      <b>The role:</b> main point of contact for their highest-value VIP collectors, <b>mostly by text</b> (plus email and phone). Owns orders, grading submissions, shipping and account requests from start to finish. Also helps with insurance claims, CSAT and feedback review, escalations and VIP campaigns with Marketing. <i>"A customer support role first."</i></div>
+
+      <h3>What they want → your proof</h3>
+      <div class="card"><table>
+        <tr><th>They want</th><th>You</th></tr>
+        <tr><td>2+ yrs high-touch support</td><td>~3 yrs at TRACE ✅</td></tr>
+        <tr><td>Great text-based writing</td><td>Chat + email, 88% CSAT ✅</td></tr>
+        <tr><td>Many conversations at once</td><td>About 20+ a day ✅</td></tr>
+        <tr><td>Cards / collectibles knowledge</td><td>Collector + BloomingCollects vendor (Collect-A-Con LA, LA Card Show) ✅✅</td></tr>
+        <tr><td>Uses AI tools</td><td>Claude + OpenClaw ✅</td></tr>
+        <tr><td>Zendesk (preferred)</td><td>Daily user, built macros ✅</td></tr>
+        <tr><td>Works with Ops / Grading / Marketing</td><td>Escalations to engineering; marketing degree ✅</td></tr>
+        <tr><td>Evenings / weekends for drops</td><td>Answer honestly ⚠️</td></tr>
+        <tr><td>Insurance claims</td><td>New to you, so say you'd learn it fast ⚠️</td></tr>
+        <tr><td>Sports cards</td><td>Pokémon/TCG-first, learning sports ⚠️</td></tr>
+      </table></div>
+
+      <h3>Your answers (say them naturally, not word for word)</h3>
+      <div id="arenaQ"></div>
+
+      <h3>Questions to ask them (pick 3)</h3>
+      <div class="card"><ul>
+        <li>How many VIPs would I support, and what are their most common requests?</li>
+        <li>What does a great first 90 days look like in this role?</li>
+        <li>Is this role in the LA office, hybrid or remote?</li>
+        <li>How does evening and weekend coverage work during drops and auctions?</li>
+        <li>What tools does the team use: Zendesk, Gladly or something else?</li>
+      </ul></div>
+
+      <h3>😮‍💨 Nerves checklist</h3>
+      <div class="card"><ul>
+        <li>Practice "Tell me about yourself," "Why Arena Club" and "How would you treat a VIP" out loud 3–4 times.</li>
+        <li>Keep a cheat sheet next to your screen: 20+/day, 88% CSAT, ~3 yrs, your story names and your 3 questions.</li>
+        <li>Slow down. "Great question, let me think for a sec" is totally fine.</li>
+        <li>Before the call: water, phone on silent, breathe in 4 · hold 4 · out 6.</li>
+        <li>Browse the Arena Club site/app beforehand so you can say "I checked out the vault and pack openings."</li>
+      </ul></div>
+    </section>
+
     <!-- 0. TOP QUESTIONS -->
     <section id="top">
       <h2>⭐ Top interview questions + 6 core stories</h2>
@@ -278,7 +322,7 @@
   <footer>🌱 Practice out loud. Your answers save only in this browser.</footer>
 
 <script>
-const TABS=[["top","⭐ Top questions"],["cheat","Cheat sheet"],["practice","Practice"],["mock","Mock interview"],["stories","TRACE stories"],["zendesk","Zendesk"],["fund","CS fundamentals"],["tb","TeamBuilder"],["soci","SOCi (SDR)"]];
+const TABS=[["arena","🃏 Arena Club (Mon 11/9)"],["top","⭐ Top questions"],["cheat","Cheat sheet"],["practice","Practice"],["mock","Mock interview"],["stories","TRACE stories"],["zendesk","Zendesk"],["fund","CS fundamentals"],["tb","TeamBuilder"],["soci","SOCi (SDR)"]];
 const tabsEl=document.getElementById("tabs");
 function openTab(id){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===id));tabsEl.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.id===id));localStorage.setItem("ip_tab",id);scrollTo({top:0});}
 TABS.forEach(([id,l])=>{const b=document.createElement("button");b.textContent=l;b.dataset.id=id;b.onclick=()=>openTab(id);tabsEl.appendChild(b);});
@@ -456,6 +500,30 @@ const M=[
 ];
 document.getElementById("tbMap").innerHTML="<tr><th>They want</th><th>Your proof</th></tr>"+M.map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join("");
 
+/* ---------- ARENA CLUB ---------- */
+const AQ=[
+ ["Tell me about yourself","Hi, I'm Jason. I graduated from Cal State Long Beach with a marketing degree, and then I worked in customer support for about three years at TRACE, an AI camera company for soccer. I helped clubs, coaches and parents, mostly through chat and email. I handled about 20+ conversations a day and kept an 88% CSAT. I also wrote help guides and worked with our engineers on bigger issues. Outside of work, I'm a big card collector. I run a small vending business called BloomingCollects and sell at shows like Collect-A-Con LA and the LA Card Show, so I'm around collectors all the time. This role combines both things I love: helping customers and the collectibles hobby. That's why I'm excited about Arena Club."],
+ ["Why Arena Club?","I'm a collector myself, so I already love what you're building. Grading, the vault, and buying and selling all in one place makes collecting a lot easier. I'd love to help VIP collectors have a great experience, because I know what matters to them."],
+ ["What's your biggest strength?","Handling a high volume of customer requests without getting overwhelmed. At TRACE I managed about 20+ conversations a day by chat and email and kept an 88% CSAT. I also think I can connect with VIP collectors really well, because I'm a passionate collector myself. I run a card vending business, so I deal with cards and collectors every week and keep up with market trends, grading and pricing."],
+ ["What's your biggest weakness?","My knowledge of sports cards isn't as deep as my knowledge of Pokémon and other TCGs. But the fundamentals carry over, like grading, condition, comps and how collectors think about value. At card shows I'm surrounded by sports card vendors, so I'm always picking up how that market moves, and I've started following sports card prices more closely. I learn fast, and I'd make it a priority in my first few weeks. <i>(Only say 'started following' if you actually do it before Monday.)</i>"],
+ ["Backup weakness","I haven't handled insurance claims before, which I saw is part of this role. What I have done is document issues carefully and follow them through to resolution with other teams at TRACE, so I'm confident I can learn the claims process quickly. I'd ask to shadow someone on my first few."],
+ ["Why did you leave TRACE?","My time at TRACE wrapped up in June. I learned a lot there, and now I want a role where I can combine customer support with the collectibles hobby I'm passionate about."],
+ ["Tell me about a time you helped an upset customer","A coach messaged us the night before a tournament because his game video wasn't showing up. He was stressed, so first I told him I'd stay with him until it was fixed. It turned out his camera's Wi-Fi was weak, so I walked him through it step by step. The video uploaded while we were chatting, and he left a great rating. <i>(Swap in your real details.)</i>"],
+ ["How do you handle a lot of messages at once?","I check what's most urgent first, like someone who's completely stuck. Then I work through the rest in order. I keep quick notes on each conversation so I don't lose track, and I use macros for common questions so I can spend more time on the harder ones."],
+ ["Tell me about the macros you built","I built Zendesk macros for our most common camera tickets: uploads, setting up the camera, turning it on, setting up the tripod and connecting to Wi-Fi. They let me send clear replies in one click, which saved me time for the harder tickets. I'd still personalize each one so it didn't feel robotic. <i>(Say 'one-click replies', not 'auto replies'.)</i>"],
+ ["Do you know triggers / automations?","I haven't set those up myself, but I understand how they work. Triggers run automatically when a ticket comes in or changes, like routing VIP tickets to the right team. Automations run on a timer, like sending a follow-up after a few days. I'd pick them up quickly."],
+ ["How would you make a VIP feel special?","I'd remember what they collect and what they've bought before, reply fast and follow up before they have to ask. Like if a set they collect is dropping, I'd give them a heads-up. It should feel like they have a personal contact, not a help desk. I'd use macros for routine things like shipping or grading updates, so I have more time for the personal conversations."],
+ ["Tell me about a time you had to say no","Sometimes customers asked for things we couldn't do, like [a real example]. I was honest and kind about it, explained why and offered what I could do instead. Most people are fine with a no if you're upfront and still trying to help."],
+ ["Have you worked with high-value customers?","At my card table I deal with serious collectors who spend real money on graded cards. They want honesty, fast answers and someone who actually knows the product, which is exactly how I'd treat Arena Club's VIPs."],
+ ["Do you know grading and the card market?","Yes. I deal with graded cards all the time at my shows, from PSA, CGC and others. I check recent sales to price cards, and I know how much condition and grade affect value. I'm strongest in Pokémon and TCGs, and the basics carry over to sports cards."],
+ ["Working with other teams","At TRACE I worked with engineering a lot. I'd reproduce the issue, pull the camera details through Slack and send a clear write-up, then keep the customer updated until it was fixed. I'd do the same with Ops or Grading here."],
+ ["How do you use AI tools?","I use Claude and an AI tool called OpenClaw a lot. I set one up to handle repetitive research and tracking for me. I'd use AI to draft replies and summarize long conversations faster, but I always check it before sending."],
+ ["Evenings and weekends?","Yes. I know drops and auctions happen when collectors are free, and I'm at card shows on weekends anyway, so I get it. <i>(Only if you're really okay with it.)</i>"],
+ ["Where do you see yourself in a few years?","Growing here. I'd like to become someone the team relies on, especially with VIPs, and help improve how the VIP program works over time."],
+ ["Salary expectations?","Based on the range in the posting, I'm looking for around $80K, but I'm flexible depending on the full package."],
+];
+document.getElementById("arenaQ").innerHTML=AQ.map(([q,a])=>`<details><summary>${q}</summary><div class="sample">${a}</div></details>`).join("");
+
 /* ---------- TOP QUESTIONS ---------- */
 const C6=[
  ["1 · The game-day rescue","Frustrated customer, pressure, communication",
@@ -556,7 +624,7 @@ function sociQuiz(){const el=document.getElementById("sociQuiz");if(sqi>=SQ.leng
 sociQuiz();
 document.getElementById("sociBasics").innerHTML=SB.map(([h,b])=>`<details><summary>${h}</summary><p>${b}</p></details>`).join("");
 
-build();openTab(localStorage.getItem("ip_tab")||"top");
+build();openTab("arena");
 </script>
 </body>
 </html>
